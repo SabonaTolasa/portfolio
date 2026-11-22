@@ -55,7 +55,7 @@
       <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-400">
         <a href="#about" class="hover:text-sky-400 transition-colors">Profile</a>
         <a href="#experience" class="hover:text-sky-400 transition-colors">Experience</a>
-        <a href="#projects" class="hover:text-sky-400 transition-colors">Systems & Projects</a>
+        <a href="#projects" class="hover:text-sky-400 transition-colors">Systems &amp; Projects</a>
         <a href="#education" class="hover:text-sky-400 transition-colors">Education</a>
         <a href="#skills" class="hover:text-sky-400 transition-colors">Tech Stack</a>
       </nav>
@@ -78,7 +78,7 @@
         <div class="lg:col-span-8">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-6">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span id="hero-status">Sabona Tolasa &bull; Core Banking Integration & Full-Stack Engineer</span>
+            <span id="hero-status">Sabona Tolasa &bull; Core Banking Integration &amp; Full-Stack Engineer</span>
           </div>
           <h1 id="hero-name" class="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight mb-4">
             Sabona Tolasa
@@ -127,7 +127,7 @@
             </div>
             <div>
               <div class="text-xs text-slate-500">Education</div>
-              <div id="snapshot-edu" class="text-sm font-semibold text-slate-200">B.Sc. in Computer Science &amp; Software Engineering</div>
+              <div id="snapshot-edu" class="text-sm font-semibold text-slate-200">B.Sc. in Computer Science &bull; Addis Ababa University</div>
             </div>
           </div>
         </div>
@@ -310,8 +310,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="border border-slate-800 rounded-xl p-6 bg-obsidian-850/90">
           <div class="text-xs font-mono text-sky-400 mb-1">Academic Degree</div>
-          <h3 id="edu-degree" class="text-lg font-bold text-white">Bachelor of Science (B.Sc.) in Electrical & Computer Engineering</h3>
-          <p id="edu-university" class="text-sm font-medium text-slate-300 mt-1">Addis Ababa University &bull; Class of 2024</p>
+          <h3 id="edu-degree" class="text-lg font-bold text-white">Bachelor of Science (B.Sc.) in Computer Science / Software Engineering</h3>
+          <p id="edu-university" class="text-sm font-medium text-slate-300 mt-1">Addis Ababa University</p>
           <p id="edu-details" class="text-sm text-slate-400 mt-3 leading-relaxed">
             Focused on Data Structures &amp; Algorithms, Object-Oriented Software Engineering, Relational Database Management Systems, Computer Networks, and Web Application Architecture.
           </p>
@@ -383,51 +383,37 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact Section (Direct Links Hidden; Form Routes to sabonatolasa@gmail.com via Web3Forms) -->
   <section id="contact" class="bg-obsidian-900 border-t border-slate-800 py-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-3">Connect with Sabona Tolasa</h2>
-          <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
-            Available for full-stack software engineering roles, core banking integration consulting, and enterprise Java modernization initiatives.
-          </p>
-          <div class="space-y-3 text-sm font-mono">
-            <div class="flex items-center gap-3">
-              <span class="text-slate-500">EMAIL:</span>
-              <a id="contact-email" href="mailto:sabonatolasa@gmail.com" class="text-sky-400 underline hover:text-sky-300">sabonatolasa@gmail.com</a>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="text-slate-500">GITHUB:</span>
-              <a id="contact-github" href="https://github.com/SabonaTolasa" target="_blank" rel="noopener" class="text-sky-400 underline hover:text-sky-300">github.com/SabonaTolasa</a>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="text-slate-500">LINKEDIN:</span>
-              <a id="contact-linkedin" href="https://linkedin.com" target="_blank" rel="noopener" class="text-sky-400 underline hover:text-sky-300">linkedin.com/in/sabona-tolasa-1561a8210</a>
-            </div>
-          </div>
-        </div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-3">Connect with Sabona Tolasa</h2>
+        <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+          Available for full-stack software engineering roles, core banking integration consulting, and enterprise Java modernization initiatives. Send a direct message below.
+        </p>
+      </div>
 
-        <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-6 no-print">
-          <form onsubmit="handleContact(event)" class="space-y-4">
-            <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1">Your Name</label>
-              <input type="text" required placeholder="Jane Doe" class="w-full px-3 py-2 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-500" />
-            </div>
-            <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1">Email Address</label>
-              <input type="email" required placeholder="jane@company.com" class="w-full px-3 py-2 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-500" />
-            </div>
-            <div>
-              <label class="block text-xs font-medium text-slate-300 mb-1">Message</label>
-              <textarea rows="3" required placeholder="Project scope, full-stack role, or core banking integration inquiry..." class="w-full px-3 py-2 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-500"></textarea>
-            </div>
-            <button type="submit" class="w-full py-2.5 px-4 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 text-sm font-semibold transition-colors">
-              Send Message
-            </button>
-            <p id="form-feedback" class="text-xs text-emerald-400 hidden">Thank you! Your message has been prepared.</p>
-          </form>
-        </div>
+      <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-6 sm:p-8 no-print">
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleContact(event)" class="space-y-4">
+          <input type="hidden" name="access_key" value="e80df2f0-7755-424a-a9be-0cf55182e54c" />
+          <input type="hidden" name="subject" value="New Portfolio Message for Sabona Tolasa" />
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Your Name</label>
+            <input type="text" name="name" required placeholder="Enter your full name" class="w-full px-3 py-2 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Your Email Address (for reply)</label>
+            <input type="email" name="email" required placeholder="you@company.com" class="w-full px-3 py-2 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-500" />
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Message</label>
+            <textarea name="message" rows="4" required placeholder="Project scope, full-stack role, or core banking integration inquiry..." class="w-full px-3 py-2 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-500"></textarea>
+          </div>
+          <button id="submit-btn" type="submit" class="w-full py-2.5 px-4 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 text-sm font-semibold transition-colors">
+            Send Message
+          </button>
+          <p id="form-feedback" class="text-xs text-emerald-400 hidden"></p>
+        </form>
       </div>
     </div>
   </section>
@@ -461,19 +447,7 @@
         </div>
         <div>
           <label class="block text-xs font-semibold text-slate-300 mb-1">University Name &amp; Graduation Year</label>
-          <input id="inp-uni" type="text" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="Addis Ababa University • Class of 2024" />
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
-          <input id="inp-email" type="email" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="sabonatolasa@gmail.com" />
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">GitHub URL</label>
-          <input id="inp-github" type="url" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="https://github.com/SabonaTolasa" />
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">LinkedIn URL</label>
-          <input id="inp-linkedin" type="url" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" placeholder="https://linkedin.com/in/sabona-tolasa-1561a8210" />
+          <input id="inp-uni" type="text" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="Addis Ababa University" />
         </div>
       </div>
       <div class="mt-6 flex items-center justify-end gap-2.5 pt-4 border-t border-slate-800">
@@ -514,9 +488,6 @@
       const headline = document.getElementById('inp-headline').value.trim();
       const degree = document.getElementById('inp-degree').value.trim();
       const uni = document.getElementById('inp-uni').value.trim();
-      const email = document.getElementById('inp-email').value.trim();
-      const github = document.getElementById('inp-github').value.trim();
-      const linkedin = document.getElementById('inp-linkedin').value.trim();
 
       if (name) {
         document.getElementById('nav-name').textContent = name;
@@ -529,24 +500,9 @@
       if (headline) document.getElementById('hero-subtitle').textContent = headline;
       if (degree) {
         document.getElementById('edu-degree').textContent = degree;
-        document.getElementById('snapshot-edu').textContent = degree;
+        document.getElementById('snapshot-edu').textContent = degree + (uni ? ' • ' + uni : '');
       }
       if (uni) document.getElementById('edu-university').textContent = uni;
-      if (email) {
-        const el = document.getElementById('contact-email');
-        el.textContent = email;
-        el.href = 'mailto:' + email;
-      }
-      if (github) {
-        const el = document.getElementById('contact-github');
-        el.textContent = github.replace(/^https?:\/\//, '');
-        el.href = github;
-      }
-      if (linkedin) {
-        const el = document.getElementById('contact-linkedin');
-        el.textContent = linkedin.replace(/^https?:\/\//, '');
-        el.href = linkedin;
-      }
       closeEditor();
     }
 
@@ -569,9 +525,39 @@
       exportHtml();
     }
 
-    function handleContact(e) {
+    async function handleContact(e) {
       e.preventDefault();
-      document.getElementById('form-feedback').classList.remove('hidden');
+      const form = e.target;
+      const btn = document.getElementById('submit-btn');
+      const feedback = document.getElementById('form-feedback');
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      feedback.classList.add('hidden');
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form)
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          feedback.textContent = 'Message delivered! Sabona will reply to your email soon.';
+          feedback.className = 'text-xs text-emerald-400';
+          form.reset();
+        } else {
+          feedback.textContent = 'Delivery failed: ' + (result.message || 'Please try again.');
+          feedback.className = 'text-xs text-rose-400';
+        }
+      } catch (err) {
+        feedback.textContent = 'Network error. Please check your internet connection and try again.';
+        feedback.className = 'text-xs text-rose-400';
+      } finally {
+        feedback.classList.remove('hidden');
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+      }
     }
   </script>
 </body>
