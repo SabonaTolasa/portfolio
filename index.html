@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sabona Tolasa | Core Banking Integration & Full-Stack Software Engineer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: {
+              950: '#05070a',
+              900: '#0a0e17',
+              850: '#0f1623',
+              800: '#151e2e',
+              700: '#1e293b',
+            },
+            accent: {
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #05070a !important; color: #f8fafc !important; }
+      section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body class="bg-obsidian-950 text-slate-200 font-sans antialiased selection:bg-accent-500/30 selection:text-sky-200">
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-40 bg-obsidian-950/90 backdrop-blur-md border-b border-slate-800/80 no-print">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/30 text-sky-400 font-mono text-xs font-semibold flex items-center justify-center tracking-wider">ST</span>
+        <span id="nav-name" class="font-semibold text-white tracking-tight">Sabona Tolasa</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-400">
+        <a href="#about" class="hover:text-sky-400 transition-colors">Profile</a>
+        <a href="#experience" class="hover:text-sky-400 transition-colors">Experience</a>
+        <a href="#projects" class="hover:text-sky-400 transition-colors">Systems & Projects</a>
+        <a href="#education" class="hover:text-sky-400 transition-colors">Education</a>
+        <a href="#skills" class="hover:text-sky-400 transition-colors">Tech Stack</a>
+      </nav>
+      <div class="flex items-center gap-2.5">
+        <button onclick="openEditor()" class="px-3 py-1.5 text-xs font-medium rounded-md border border-slate-700 bg-obsidian-900 text-slate-300 hover:border-slate-500 hover:text-white transition-colors">
+          Customize Details
+        </button>
+        <a href="#contact" class="px-3.5 py-1.5 text-xs font-medium rounded-md bg-sky-500 text-slate-950 font-semibold hover:bg-sky-400 transition-colors">
+          Contact
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="top" class="bg-obsidian-900/60 border-b border-slate-800/80 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sky-900/20 via-transparent to-transparent pointer-events-none"></div>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-6">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span id="hero-status">Sabona Tolasa &bull; Core Banking Integration & Full-Stack Engineer</span>
+          </div>
+          <h1 id="hero-name" class="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight mb-4">
+            Sabona Tolasa
+          </h1>
+          <p id="hero-subtitle" class="text-lg sm:text-xl font-medium text-sky-400 mb-4">
+            Enterprise Java &amp; Full-Stack Systems Architect
+          </p>
+          <p id="hero-summary" class="text-base sm:text-lg text-slate-400 leading-relaxed max-w-3xl mb-8">
+            Full-stack software engineer specializing in mission-critical core banking transformations, legacy JDK 7/8 to JDK 21 migrations, Temenos Transact / TAFJ R26 architectures, and modern full-stack web applications. Proven track record designing fault-tolerant middleware, automated code-refactoring pipelines, and clean user-facing platforms.
+          </p>
+          <div class="flex flex-wrap items-center gap-3 no-print">
+            <a href="#projects" class="px-5 py-2.5 rounded-lg bg-sky-500 text-slate-950 text-sm font-semibold hover:bg-sky-400 transition-colors">
+              View Engineering Case Studies
+            </a>
+            <button onclick="window.print()" class="px-5 py-2.5 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-200 text-sm font-medium hover:border-slate-500 transition-colors">
+              Save / Print Resume PDF
+            </button>
+            <button onclick="exportHtml()" class="px-5 py-2.5 rounded-lg border border-sky-500/30 bg-sky-500/10 text-sky-300 text-sm font-medium hover:bg-sky-500/20 transition-colors">
+              Export index.html for Render
+            </button>
+          </div>
+        </div>
+
+        <!-- Executive Snapshot Card -->
+        <div class="lg:col-span-4">
+          <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-6 space-y-4 shadow-2xl">
+            <div class="text-xs font-mono uppercase tracking-wider text-sky-400 border-b border-slate-800 pb-2.5 flex items-center justify-between">
+              <span>Engineering Snapshot</span>
+              <span class="text-slate-500">SYS.01</span>
+            </div>
+            <div>
+              <div class="text-xs text-slate-500">Engineer</div>
+              <div id="snapshot-name" class="text-sm font-semibold text-white">Sabona Tolasa</div>
+            </div>
+            <div>
+              <div class="text-xs text-slate-500">Primary Domain</div>
+              <div class="text-sm font-semibold text-slate-200">Core Banking &amp; Full-Stack Engineering</div>
+            </div>
+            <div>
+              <div class="text-xs text-slate-500">Core Stack</div>
+              <div class="text-sm font-semibold text-slate-200">Java 21, Spring Boot, React/TypeScript, Python, SQL Server</div>
+            </div>
+            <div>
+              <div class="text-xs text-slate-500">Enterprise Platforms</div>
+              <div class="text-sm font-semibold text-slate-200">Temenos Transact (R16–R26), TAFJ, WildFly 39, IRIS APIs</div>
+            </div>
+            <div>
+              <div class="text-xs text-slate-500">Education</div>
+              <div id="snapshot-edu" class="text-sm font-semibold text-slate-200">B.Sc. in Computer Science &amp; Software Engineering</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About & Value Proposition -->
+  <section id="about" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="md:col-span-1">
+        <h2 class="text-xl font-bold text-white">Engineering Background</h2>
+        <p class="text-sm text-slate-400 mt-1">Bridging high-throughput banking backends with responsive modern web architectures.</p>
+      </div>
+      <div class="md:col-span-2 space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
+        <p id="about-p1">
+          With a comprehensive background spanning <strong class="text-white">end-to-end full-stack web development</strong> and <strong class="text-white">enterprise core banking integration</strong>, I architect software systems that balance modern developer ergonomics with strict financial-grade reliability, security, and auditability.
+        </p>
+        <p id="about-p2">
+          On the enterprise backend, I lead cross-organizational Java runtime upgrades (migrating legacy JDK 7/8 adapters directly to <strong class="text-sky-400">JDK 21</strong>), manage <strong class="text-sky-400">Temenos TAFJ R26</strong> deployments on <strong class="text-white">WildFly</strong> and <strong class="text-white">Microsoft SQL Server</strong>, and author Interface Control Documents (ICDs) and cryptographic modules (AES/CBC/PKCS5Padding). Across the full stack, I build responsive frontends and automated developer tooling using <strong class="text-sky-400">TypeScript, React, Python, and RESTful/SOAP APIs</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="bg-obsidian-900/60 border-y border-slate-800/80 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-white">Professional Experience</h2>
+        <p class="text-sm text-slate-400 mt-1">Delivering production systems across enterprise banking and full-stack software engineering.</p>
+      </div>
+
+      <div class="space-y-8">
+        <!-- Role 1 -->
+        <div class="border border-slate-800 rounded-xl p-6 sm:p-8 bg-obsidian-850/90">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="text-lg font-bold text-white">Core Banking Integration &amp; Enterprise Java Engineer</h3>
+              <p class="text-sm font-medium text-sky-400">Enterprise Banking Technology &amp; Integration Team</p>
+            </div>
+            <span class="font-mono text-xs px-3 py-1 rounded-md bg-obsidian-950 border border-slate-800 text-slate-400 self-start">
+              Current Role
+            </span>
+          </div>
+          <ul class="space-y-2.5 text-sm text-slate-300 list-disc pl-5">
+            <li>Spearheaded the direct migration of 235+ legacy Java 7/8 core banking integration adapters and custom routines to <strong class="text-white">JDK 21</strong>, replacing deprecated APIs and modernizing cryptographic cipher implementations.</li>
+            <li>Configured, deployed, and tuned <strong class="text-white">Temenos Application Framework Java (TAFJ) ModelBank R26</strong> environments on <strong class="text-white">WildFly 39.0.1.Final</strong> and <strong class="text-white">Microsoft SQL Server</strong> via automated PowerShell and <code class="text-sky-300 bg-obsidian-950 px-1.5 py-0.5 rounded">sqlcmd</code> scripts.</li>
+            <li>Authored technical Interface Control Documents (ICDs) and led technical alignment workshops across internal banking teams, Inlaks, and Temenos specialists ahead of System Integration Testing (SIT) and Close of Business (COB) validation.</li>
+            <li>Built automated Python static analysis and AST-assisted refactoring tools to audit defect rules, enforce classpath compliance, and generate CSV migration telemetry.</li>
+          </ul>
+        </div>
+
+        <!-- Role 2 -->
+        <div class="border border-slate-800 rounded-xl p-6 sm:p-8 bg-obsidian-850/90">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h3 class="text-lg font-bold text-white">Full-Stack Software Developer</h3>
+              <p class="text-sm font-medium text-sky-400">Web Applications, APIs &amp; Database Systems</p>
+            </div>
+            <span class="font-mono text-xs px-3 py-1 rounded-md bg-obsidian-950 border border-slate-800 text-slate-400 self-start">
+              Full-Stack Engineering
+            </span>
+          </div>
+          <ul class="space-y-2.5 text-sm text-slate-300 list-disc pl-5">
+            <li>Designed and shipped full-stack web applications combining responsive <strong class="text-white">React / TypeScript / Tailwind CSS</strong> frontends with modular <strong class="text-white">Java Spring Boot, Node.js, and Python</strong> RESTful backends.</li>
+            <li>Architected relational database schemas, stored procedures, and optimized queries across <strong class="text-white">PostgreSQL</strong> and <strong class="text-white">MS SQL Server</strong>, ensuring transactional integrity under concurrent workloads.</li>
+            <li>Implemented end-to-end authentication, role-based access control (RBAC), OpenAPI/Swagger service contracts, and automated CI/CD deployment workflows on cloud platforms including Render and Docker.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Systems & Projects -->
+  <section id="projects" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+      <div>
+        <h2 class="text-2xl font-bold text-white">Selected Systems &amp; Case Studies</h2>
+        <p class="text-sm text-slate-400 mt-1">Production architectures spanning core banking modernization and full-stack platforms.</p>
+      </div>
+      <div class="flex gap-2 no-print">
+        <button onclick="filterProjects('all')" class="proj-filter active px-3 py-1.5 text-xs font-semibold rounded-md bg-sky-500 text-slate-950" data-filter="all">All</button>
+        <button onclick="filterProjects('banking')" class="proj-filter px-3 py-1.5 text-xs font-medium rounded-md bg-obsidian-900 border border-slate-700 text-slate-300 hover:border-slate-500" data-filter="banking">Core Banking</button>
+        <button onclick="filterProjects('fullstack')" class="proj-filter px-3 py-1.5 text-xs font-medium rounded-md bg-obsidian-900 border border-slate-700 text-slate-300 hover:border-slate-500" data-filter="fullstack">Full-Stack</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projects-grid">
+      <!-- Project 1 -->
+      <article class="project-card bg-obsidian-850 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-sky-500/40 transition-colors" data-category="banking">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400">Enterprise Java / Core Banking</span>
+            <span class="text-xs font-mono text-slate-500">JDK 7/8 &rarr; JDK 21</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Automated JDK 21 Core Banking Migration Pipeline</h3>
+          <p class="text-sm text-slate-400 leading-relaxed mb-4">
+            Engineered Python static defect scanners and automated refactoring scripts to upgrade 235+ legacy core banking integration classes to JDK 21, modernizing AES/CBC/PKCS5Padding security routines and eliminating deprecated dependencies.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-800 flex flex-wrap gap-1.5">
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Java 21</span>
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Python</span>
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">AES/CBC</span>
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Static Analysis</span>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card bg-obsidian-850 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-sky-500/40 transition-colors" data-category="banking">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400">Middleware &amp; Infrastructure</span>
+            <span class="text-xs font-mono text-slate-500">Temenos R26</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Temenos TAFJ R26 &amp; WildFly 39 Deployment Architecture</h3>
+          <p class="text-sm text-slate-400 leading-relaxed mb-4">
+            Architected and automated ModelBank R26 environment provisioning on WildFly 39.0.1.Final and MS SQL Server, configuring TAFJ runtime properties, Log4j diagnostics, IRIS REST/OFS endpoints, and multi-threaded COB workers.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-800 flex flex-wrap gap-1.5">
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">TAFJ R26</span>
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">WildFly 39</span>
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">MS SQL Server</span>
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">PowerShell</span>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card bg-obsidian-850 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-emerald-500/40 transition-colors" data-category="fullstack">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">Full-Stack Web Platform</span>
+            <span class="text-xs font-mono text-slate-500">Spring Boot + React</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Financial Services Portal &amp; API Gateway</h3>
+          <p class="text-sm text-slate-400 leading-relaxed mb-4">
+            Built a full-stack financial operations dashboard with a React + TypeScript frontend and a Java 21 Spring Boot REST API backend, featuring JWT authentication, real-time transaction audit logs, and PostgreSQL persistence.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-800 flex flex-wrap gap-1.5">
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">React</span>
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">TypeScript</span>
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Spring Boot</span>
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">PostgreSQL</span>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project-card bg-obsidian-850 border border-slate-800 rounded-xl p-6 flex flex-col justify-between hover:border-emerald-500/40 transition-colors" data-category="fullstack">
+        <div>
+          <div class="flex items-center justify-between gap-2 mb-3">
+            <span class="text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">Full-Stack &amp; DevOps</span>
+            <span class="text-xs font-mono text-slate-500">Cloud &amp; Automation</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">Automated API Contract &amp; Integration Testing Suite</h3>
+          <p class="text-sm text-slate-400 leading-relaxed mb-4">
+            Developed a web-based validation workbench to test JSON/XML interface payloads, verify schema compliance against Interface Control Documents, and streamline regression testing prior to production cutovers.
+          </p>
+        </div>
+        <div class="pt-4 border-t border-slate-800 flex flex-wrap gap-1.5">
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Node.js</span>
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">REST / SOAP</span>
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Docker</span>
+          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Render CI/CD</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Education & Credentials -->
+  <section id="education" class="bg-obsidian-900/60 border-y border-slate-800/80 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-white">Education &amp; Professional Training</h2>
+        <p class="text-sm text-slate-400 mt-1">Academic foundation in computer science and specialized core banking certifications.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="border border-slate-800 rounded-xl p-6 bg-obsidian-850/90">
+          <div class="text-xs font-mono text-sky-400 mb-1">Academic Degree</div>
+          <h3 id="edu-degree" class="text-lg font-bold text-white">Bachelor of Science (B.Sc.) in Electrical & Computer Engineering</h3>
+          <p id="edu-university" class="text-sm font-medium text-slate-300 mt-1">Addis Ababa University &bull; Class of 2024</p>
+          <p id="edu-details" class="text-sm text-slate-400 mt-3 leading-relaxed">
+            Focused on Data Structures &amp; Algorithms, Object-Oriented Software Engineering, Relational Database Management Systems, Computer Networks, and Web Application Architecture.
+          </p>
+        </div>
+
+        <div class="border border-slate-800 rounded-xl p-6 bg-obsidian-850/90">
+          <div class="text-xs font-mono text-sky-400 mb-1">Enterprise Specialization</div>
+          <h3 class="text-lg font-bold text-white">Temenos Transact (R16 to R26) Upgrade &amp; Technical Architecture</h3>
+          <p class="text-sm font-medium text-slate-300 mt-1">Inlaks &amp; Temenos Technical Enablement &bull; 2026</p>
+          <p class="text-sm text-slate-400 mt-3 leading-relaxed">
+            Comprehensive training covering TAFJ runtime architecture, L3 Java Extensibility hooks, Close of Business (COB) multi-threading, Temenos Web Services (TWS), and IRIS RESTful APIs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Stack Matrix -->
+  <section id="skills" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="mb-10">
+      <h2 class="text-2xl font-bold text-white">Technical Stack</h2>
+      <p class="text-sm text-slate-400 mt-1">Production languages, frameworks, databases, and enterprise middleware.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-5">
+        <h3 class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3">Backend &amp; Enterprise</h3>
+        <ul class="space-y-2 text-sm text-slate-300">
+          <li>Java (JDK 7/8 &rarr; JDK 21)</li>
+          <li>Spring Boot &amp; Spring Security</li>
+          <li>Python (Automation &amp; FastAPI)</li>
+          <li>Node.js &amp; Express</li>
+          <li>RESTful APIs, SOAP &amp; OFS</li>
+        </ul>
+      </div>
+
+      <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-5">
+        <h3 class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3">Frontend Development</h3>
+        <ul class="space-y-2 text-sm text-slate-300">
+          <li>TypeScript &amp; JavaScript (ES2024)</li>
+          <li>React &amp; Next.js</li>
+          <li>HTML5 &amp; Semantic Markup</li>
+          <li>Tailwind CSS &amp; Responsive UI</li>
+          <li>Swagger / OpenAPI Tooling</li>
+        </ul>
+      </div>
+
+      <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-5">
+        <h3 class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3">Core Banking &amp; Servers</h3>
+        <ul class="space-y-2 text-sm text-slate-300">
+          <li>Temenos Transact (R16–R26)</li>
+          <li>Temenos TAFJ &amp; L3 Java Hooks</li>
+          <li>WildFly 39.0.1.Final</li>
+          <li>Temenos IRIS &amp; TWS</li>
+          <li>COB &amp; TSA.WORKER Tuning</li>
+        </ul>
+      </div>
+
+      <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-5">
+        <h3 class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3">Data &amp; DevOps</h3>
+        <ul class="space-y-2 text-sm text-slate-300">
+          <li>Microsoft SQL Server &amp; sqlcmd</li>
+          <li>PostgreSQL &amp; MySQL</li>
+          <li>PowerShell &amp; Batch Scripting</li>
+          <li>Git, GitHub &amp; Docker</li>
+          <li>Render Cloud Hosting</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-obsidian-900 border-t border-slate-800 py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-3">Connect with Sabona Tolasa</h2>
+          <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
+            Available for full-stack software engineering roles, core banking integration consulting, and enterprise Java modernization initiatives.
+          </p>
+          <div class="space-y-3 text-sm font-mono">
+            <div class="flex items-center gap-3">
+              <span class="text-slate-500">EMAIL:</span>
+              <a id="contact-email" href="mailto:sabonatolasa@gmail.com" class="text-sky-400 underline hover:text-sky-300">sabonatolasa@gmail.com</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-slate-500">GITHUB:</span>
+              <a id="contact-github" href="https://github.com/SabonaTolasa" target="_blank" rel="noopener" class="text-sky-400 underline hover:text-sky-300">github.com/SabonaTolasa</a>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-slate-500">LINKEDIN:</span>
+              <a id="contact-linkedin" href="https://linkedin.com" target="_blank" rel="noopener" class="text-sky-400 underline hover:text-sky-300">linkedin.com/in/sabona-tolasa-1561a8210</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-6 no-print">
+          <form onsubmit="handleContact(event)" class="space-y-4">
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Your Name</label>
+              <input type="text" required placeholder="Jane Doe" class="w-full px-3 py-2 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-500" />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Email Address</label>
+              <input type="email" required placeholder="jane@company.com" class="w-full px-3 py-2 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-500" />
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-300 mb-1">Message</label>
+              <textarea rows="3" required placeholder="Project scope, full-stack role, or core banking integration inquiry..." class="w-full px-3 py-2 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-500"></textarea>
+            </div>
+            <button type="submit" class="w-full py-2.5 px-4 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 text-sm font-semibold transition-colors">
+              Send Message
+            </button>
+            <p id="form-feedback" class="text-xs text-emerald-400 hidden">Thank you! Your message has been prepared.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-obsidian-950 text-slate-500 py-6 text-xs border-t border-slate-800/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div id="footer-copy">&copy; 2026 Sabona Tolasa. Core Banking Integration &amp; Full-Stack Software Engineer. Deployed on Render.</div>
+      <button onclick="openEditor()" class="text-slate-400 hover:text-sky-400 underline no-print">Customize &amp; Export HTML</button>
+    </div>
+  </footer>
+
+  <!-- Interactive Customization Modal -->
+  <div id="editor-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 no-print">
+    <div class="bg-obsidian-900 rounded-xl max-w-lg w-full p-6 shadow-2xl border border-slate-700 max-h-[90vh] overflow-y-auto text-slate-200">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+        <h3 class="text-lg font-bold text-white">Personalize Portfolio Details</h3>
+        <button onclick="closeEditor()" class="text-slate-400 hover:text-white text-xl leading-none">&times;</button>
+      </div>
+      <div class="space-y-3 text-sm">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name</label>
+          <input id="inp-name" type="text" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="Sabona Tolasa" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Professional Headline</label>
+          <input id="inp-headline" type="text" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="Enterprise Java & Full-Stack Systems Architect" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Degree Title</label>
+          <input id="inp-degree" type="text" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="Bachelor of Science (B.Sc.) in Computer Science / Software Engineering" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">University Name &amp; Graduation Year</label>
+          <input id="inp-uni" type="text" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="Addis Ababa University • Class of 2024" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+          <input id="inp-email" type="email" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="sabonatolasa@gmail.com" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">GitHub URL</label>
+          <input id="inp-github" type="url" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="https://github.com/SabonaTolasa" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">LinkedIn URL</label>
+          <input id="inp-linkedin" type="url" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" placeholder="https://linkedin.com/in/sabona-tolasa-1561a8210" />
+        </div>
+      </div>
+      <div class="mt-6 flex items-center justify-end gap-2.5 pt-4 border-t border-slate-800">
+        <button onclick="applyEdits()" class="px-4 py-2 rounded-lg border border-slate-700 text-slate-300 text-xs font-semibold hover:bg-obsidian-800">
+          Apply Preview
+        </button>
+        <button onclick="applyAndDownload()" class="px-4 py-2 rounded-lg bg-sky-500 text-slate-950 text-xs font-semibold hover:bg-sky-400">
+          Download index.html
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function filterProjects(category) {
+      document.querySelectorAll('.proj-filter').forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.className = 'proj-filter active px-3 py-1.5 text-xs font-semibold rounded-md bg-sky-500 text-slate-950';
+        } else {
+          btn.className = 'proj-filter px-3 py-1.5 text-xs font-medium rounded-md bg-obsidian-900 border border-slate-700 text-slate-300 hover:border-slate-500';
+        }
+      });
+      document.querySelectorAll('.project-card').forEach(card => {
+        card.style.display = (category === 'all' || card.dataset.category === category) ? 'flex' : 'none';
+      });
+    }
+
+    function openEditor() {
+      document.getElementById('editor-modal').classList.remove('hidden');
+    }
+
+    function closeEditor() {
+      document.getElementById('editor-modal').classList.add('hidden');
+    }
+
+    function applyEdits() {
+      const name = document.getElementById('inp-name').value.trim();
+      const headline = document.getElementById('inp-headline').value.trim();
+      const degree = document.getElementById('inp-degree').value.trim();
+      const uni = document.getElementById('inp-uni').value.trim();
+      const email = document.getElementById('inp-email').value.trim();
+      const github = document.getElementById('inp-github').value.trim();
+      const linkedin = document.getElementById('inp-linkedin').value.trim();
+
+      if (name) {
+        document.getElementById('nav-name').textContent = name;
+        document.getElementById('hero-name').textContent = name;
+        document.getElementById('snapshot-name').textContent = name;
+        document.getElementById('hero-status').textContent = name + ' • Core Banking Integration & Full-Stack Engineer';
+        document.title = name + ' | Core Banking Integration & Full-Stack Software Engineer';
+        document.getElementById('footer-copy').innerHTML = '&copy; 2026 ' + name + '. Core Banking Integration &amp; Full-Stack Software Engineer. Deployed on Render.';
+      }
+      if (headline) document.getElementById('hero-subtitle').textContent = headline;
+      if (degree) {
+        document.getElementById('edu-degree').textContent = degree;
+        document.getElementById('snapshot-edu').textContent = degree;
+      }
+      if (uni) document.getElementById('edu-university').textContent = uni;
+      if (email) {
+        const el = document.getElementById('contact-email');
+        el.textContent = email;
+        el.href = 'mailto:' + email;
+      }
+      if (github) {
+        const el = document.getElementById('contact-github');
+        el.textContent = github.replace(/^https?:\/\//, '');
+        el.href = github;
+      }
+      if (linkedin) {
+        const el = document.getElementById('contact-linkedin');
+        el.textContent = linkedin.replace(/^https?:\/\//, '');
+        el.href = linkedin;
+      }
+      closeEditor();
+    }
+
+    function exportHtml() {
+      const clone = document.documentElement.cloneNode(true);
+      const modal = clone.querySelector('#editor-modal');
+      if (modal) modal.classList.add('hidden');
+      const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'index.html';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function applyAndDownload() {
+      applyEdits();
+      exportHtml();
+    }
+
+    function handleContact(e) {
+      e.preventDefault();
+      document.getElementById('form-feedback').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
