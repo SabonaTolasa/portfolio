@@ -487,12 +487,12 @@
             </a>
           </div>
 
-          <!-- Cisco Networking Academy -->
+          <!-- Cisco Networking Academy & OpenEDG Python Institute -->
           <div class="border border-slate-800 rounded-xl p-5 bg-obsidian-850/90 flex items-center justify-between gap-4">
             <div>
-              <div class="text-xs font-mono text-slate-400 mb-1">Cisco Networking Academy &bull; Verified</div>
-              <h4 class="text-sm font-bold text-white">Python Essentials</h4>
-              <p class="text-xs text-slate-400 mt-1">Core Python programming, data structures, algorithmic problem solving, and object-oriented scripting.</p>
+              <div class="text-xs font-mono text-slate-400 mb-1">Cisco Networking Academy &amp; OpenEDG Python Institute &bull; Issued March 7, 2023</div>
+              <h4 class="text-sm font-bold text-white">Python Essentials 1</h4>
+              <p class="text-xs text-slate-400 mt-1">Python 3 programming, algorithmic thinking, Python Standard Library scripting, and debugging.</p>
             </div>
             <span class="shrink-0 px-3 py-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-xs font-mono text-emerald-400">
               Verified
@@ -757,15 +757,68 @@
       exportHtml();
     }
 
+    function isValidSenderEmail(email) {
+      const strictRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const disposableDomains = ['mailinator.com', 'tempmail.com', '10minutemail.com', 'guerrillamail.com', 'yopmail.com'];
+      const normalized = email.toLowerCase();
+
+      if (!strictRegex.test(normalized)) {
+        return { valid: false, reason: 'Please enter a valid sender email address (e.g., name@company.com).' };
+      }
+      if (normalized === 'sabonatolasa@gmail.com') {
+        return { valid: false, reason: 'Please enter your own email address so Sabona can reply to you.' };
+      }
+      const domain = normalized.split('@')[1];
+      if (disposableDomains.includes(domain)) {
+        return { valid: false, reason: 'Disposable email addresses are not accepted. Please use a permanent email.' };
+      }
+      return { valid: true };
+    }
+
+    async function hasValidSenderMailServer(senderEmail) {
+      const domain = senderEmail.split('@')[1];
+      try {
+        const res = await fetch(`https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(domain)}&type=MX`, {
+          headers: { 'Accept': 'application/dns-json' }
+        });
+        const data = await res.json();
+        return Array.isArray(data.Answer) && data.Answer.length > 0;
+      } catch {
+        return true;
+      }
+    }
+
     async function handleContact(e) {
       e.preventDefault();
       const form = e.target;
       const btn = document.getElementById('submit-btn');
       const feedback = document.getElementById('form-feedback');
+      const senderEmail = form.querySelector('input[name="email"]').value.trim();
+
+      feedback.classList.add('hidden');
+
+      const formatCheck = isValidSenderEmail(senderEmail);
+      if (!formatCheck.valid) {
+        feedback.textContent = formatCheck.reason;
+        feedback.className = 'text-xs text-rose-400';
+        feedback.classList.remove('hidden');
+        return;
+      }
 
       btn.disabled = true;
+      btn.textContent = 'Checking sender email...';
+
+      const senderDomainActive = await hasValidSenderMailServer(senderEmail);
+      if (!senderDomainActive) {
+        feedback.textContent = 'The sender email domain does not exist or cannot receive replies. Please check for typos.';
+        feedback.className = 'text-xs text-rose-400';
+        feedback.classList.remove('hidden');
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+        return;
+      }
+
       btn.textContent = 'Sending...';
-      feedback.classList.add('hidden');
 
       try {
         const response = await fetch(form.action, {
@@ -775,7 +828,7 @@
         const result = await response.json();
 
         if (result.success) {
-          feedback.textContent = 'Message delivered! Sabona will reply to your email soon.';
+          feedback.textContent = 'Message delivered! Sabona will reply to ' + senderEmail + ' soon.';
           feedback.className = 'text-xs text-emerald-400';
           form.reset();
         } else {
