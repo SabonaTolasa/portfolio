@@ -36,10 +36,90 @@
     }
   </script>
   <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm 12mm;
+    }
     @media print {
-      .no-print { display: none !important; }
-      body { background: #05070a !important; color: #f8fafc !important; }
-      section { break-inside: avoid; }
+      .no-print, #artwork, #contact, header, footer, #art-lightbox {
+        display: none !important;
+      }
+      html, body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        font-size: 9.5pt !important;
+        line-height: 1.35 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      section {
+        background: #ffffff !important;
+        border: none !important;
+        padding-top: 6px !important;
+        padding-bottom: 6px !important;
+        margin: 0 !important;
+        break-inside: avoid;
+      }
+      .max-w-6xl {
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      h1 {
+        font-size: 18pt !important;
+        color: #0f172a !important;
+        margin-bottom: 2px !important;
+      }
+      h2 {
+        font-size: 11pt !important;
+        color: #0284c7 !important;
+        border-bottom: 1px solid #cbd5e1 !important;
+        padding-bottom: 2px !important;
+        margin-bottom: 6px !important;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      h3, h4 {
+        font-size: 9.5pt !important;
+        color: #0f172a !important;
+      }
+      p, li, span, div, strong, code {
+        color: #1e293b !important;
+        background: transparent !important;
+      }
+      .text-sky-400, .text-emerald-400, .text-purple-400, .text-amber-400 {
+        color: #0369a1 !important;
+      }
+      .bg-obsidian-850, .bg-obsidian-850\/90, .bg-obsidian-900\/60, .bg-obsidian-950 {
+        background: #f8fafc !important;
+        border-color: #cbd5e1 !important;
+        box-shadow: none !important;
+      }
+      .rounded-xl {
+        padding: 8px 10px !important;
+        border-radius: 6px !important;
+      }
+      .space-y-6 > :not([hidden]) ~ :not([hidden]),
+      .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+        margin-top: 6px !important;
+      }
+      .space-y-2\.5 > :not([hidden]) ~ :not([hidden]),
+      .space-y-2 > :not([hidden]) ~ :not([hidden]) {
+        margin-top: 2px !important;
+      }
+      .gap-6, .gap-8, .gap-12 {
+        gap: 8px !important;
+      }
+      .mb-10, .mb-8, .mb-6, .mb-5, .mb-4 {
+        margin-bottom: 4px !important;
+      }
+      .mt-8, .pt-8 {
+        margin-top: 6px !important;
+        padding-top: 6px !important;
+      }
+      .print-hide-extra {
+        display: none !important;
+      }
     }
   </style>
 </head>
@@ -61,8 +141,8 @@
         <a href="#skills" class="hover:text-sky-400 transition-colors">Tech Stack</a>
       </nav>
       <div class="flex items-center gap-2.5">
-        <button onclick="openEditor()" class="px-3 py-1.5 text-xs font-medium rounded-md border border-slate-700 bg-obsidian-900 text-slate-300 hover:border-slate-500 hover:text-white transition-colors">
-          Customize Details
+        <button onclick="downloadOnePageCV()" class="px-3 py-1.5 text-xs font-medium rounded-md border border-slate-700 bg-obsidian-900 text-slate-300 hover:border-sky-500/50 hover:text-sky-400 transition-colors">
+          Download 1-Page CV
         </button>
         <a href="#contact" class="px-3.5 py-1.5 text-xs font-medium rounded-md bg-sky-500 text-slate-950 font-semibold hover:bg-sky-400 transition-colors">
           Contact
@@ -73,11 +153,11 @@
 
   <!-- Hero Section -->
   <section id="top" class="bg-obsidian-900/60 border-b border-slate-800/80 relative overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sky-900/20 via-transparent to-transparent pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sky-900/20 via-transparent to-transparent pointer-events-none no-print"></div>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-8">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-6 no-print">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             <span id="hero-status">Sabona Tolasa &bull; Core Banking Integration, Full-Stack &amp; AI Evaluation Engineer</span>
           </div>
@@ -96,8 +176,8 @@
             <a href="#projects" class="px-5 py-2.5 rounded-lg bg-sky-500 text-slate-950 text-sm font-semibold hover:bg-sky-400 transition-colors">
               View Case Studies
             </a>
-            <button onclick="window.print()" class="px-4 py-2.5 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-200 text-sm font-medium hover:border-slate-500 transition-colors">
-              Save Resume PDF
+            <button onclick="downloadOnePageCV()" class="px-4 py-2.5 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-200 text-sm font-medium hover:border-slate-500 transition-colors">
+              Download 1-Page CV (PDF)
             </button>
 
             <!-- Social Icon Bar (No URLs exposed in UI) -->
@@ -168,8 +248,8 @@
     </div>
   </section>
 
-  <!-- About & Value Proposition -->
-  <section id="about" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <!-- About & Value Proposition (Hidden on 1-Page Print CV to save space since Hero Summary covers it) -->
+  <section id="about" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 print-hide-extra">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div class="md:col-span-1">
         <h2 class="text-xl font-bold text-white">Multidisciplinary Background</h2>
@@ -191,7 +271,7 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-10">
         <h2 class="text-2xl font-bold text-white">Professional Experience</h2>
-        <p class="text-sm text-slate-400 mt-1">Delivering production systems across enterprise core banking, full-stack development, and remote AI/STEM platforms.</p>
+        <p class="text-sm text-slate-400 mt-1 no-print">Delivering production systems across enterprise core banking, full-stack development, and remote AI/STEM platforms.</p>
       </div>
 
       <div class="space-y-6">
@@ -209,8 +289,8 @@
           <ul class="space-y-2.5 text-sm text-slate-300 list-disc pl-5">
             <li>Spearheaded the direct migration of 235+ legacy Java 7/8 core banking integration adapters and custom routines to <strong class="text-white">JDK 21</strong>, replacing deprecated APIs and modernizing cryptographic cipher implementations (AES/CBC/PKCS5Padding).</li>
             <li>Configured, deployed, and tuned <strong class="text-white">Temenos Application Framework Java (TAFJ) ModelBank R26</strong> environments on <strong class="text-white">WildFly 39.0.1.Final</strong> and <strong class="text-white">Microsoft SQL Server</strong> via automated PowerShell and <code class="text-sky-300 bg-obsidian-950 px-1.5 py-0.5 rounded">sqlcmd</code> scripts.</li>
-            <li>Authored technical Interface Control Documents (ICDs) and led technical alignment workshops across internal banking teams, Inlaks, and Temenos specialists ahead of System Integration Testing (SIT) and Close of Business (COB) validation.</li>
-            <li>Built automated Python static analysis and AST-assisted refactoring tools to audit defect rules, enforce classpath compliance, and generate CSV migration telemetry.</li>
+            <li class="print-hide-extra">Authored technical Interface Control Documents (ICDs) and led technical alignment workshops across internal banking teams, Inlaks, and Temenos specialists ahead of System Integration Testing (SIT) and Close of Business (COB) validation.</li>
+            <li class="print-hide-extra">Built automated Python static analysis and AST-assisted refactoring tools to audit defect rules, enforce classpath compliance, and generate CSV migration telemetry.</li>
           </ul>
         </div>
 
@@ -228,7 +308,7 @@
           <ul class="space-y-2.5 text-sm text-slate-300 list-disc pl-5">
             <li>Designed and shipped full-stack web applications combining responsive <strong class="text-white">React / TypeScript / Tailwind CSS</strong> frontends with modular <strong class="text-white">Java Spring Boot, Node.js, and Python</strong> RESTful backends.</li>
             <li>Architected relational database schemas, stored procedures, and optimized queries across <strong class="text-white">PostgreSQL</strong> and <strong class="text-white">MS SQL Server</strong>, ensuring transactional integrity under concurrent workloads.</li>
-            <li>Implemented end-to-end authentication, role-based access control (RBAC), OpenAPI/Swagger service contracts, and automated CI/CD deployment workflows on cloud platforms including Render and Docker.</li>
+            <li class="print-hide-extra">Implemented end-to-end authentication, role-based access control (RBAC), OpenAPI/Swagger service contracts, and automated CI/CD deployment workflows on cloud platforms including Render and Docker.</li>
           </ul>
         </div>
 
@@ -245,8 +325,8 @@
           </div>
           <ul class="space-y-2.5 text-sm text-slate-300 list-disc pl-5">
             <li>Authored and validated complex, multi-step technical and scientific evaluation benchmarks spanning software engineering, quantitative modeling, genomics, metabolic engineering, and clinical translation.</li>
-            <li>Designed atomic grading rubrics, programmatic verification scripts, and LaTeX-formatted technical specifications to meet strict automated quality-review and reproducibility thresholds.</li>
-            <li>Audited and refined large language model (LLM) reasoning outputs for factual precision, edge-case handling, and code execution integrity.</li>
+            <li class="print-hide-extra">Designed atomic grading rubrics, programmatic verification scripts, and LaTeX-formatted technical specifications to meet strict automated quality-review and reproducibility thresholds.</li>
+            <li class="print-hide-extra">Audited and refined large language model (LLM) reasoning outputs for factual precision, edge-case handling, and code execution integrity.</li>
           </ul>
         </div>
 
@@ -263,15 +343,15 @@
           </div>
           <ul class="space-y-2.5 text-sm text-slate-300 list-disc pl-5">
             <li>Recognized multiple times as a <strong class="text-white">Top Performer</strong> over a three-year tenure delivering rigorous, step-by-step mathematical solutions and formal proofs across calculus, linear algebra, differential equations, discrete mathematics, and probability theory.</li>
-            <li>Translated complex quantitative problems into structured, accessible analytical walkthroughs maintaining high accuracy and rapid turnaround times for students worldwide.</li>
+            <li class="print-hide-extra">Translated complex quantitative problems into structured, accessible analytical walkthroughs maintaining high accuracy and rapid turnaround times for students worldwide.</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Featured Systems & Projects -->
-  <section id="projects" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <!-- Featured Systems & Projects (Hidden on 1-Page Print CV to keep CV strictly 1 page) -->
+  <section id="projects" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 print-hide-extra">
     <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
       <div>
         <h2 class="text-2xl font-bold text-white">Selected Systems &amp; Case Studies</h2>
@@ -368,8 +448,8 @@
     </div>
   </section>
 
-  <!-- Creative & Artwork Gallery: Realistic Charcoal & Pencil Sketches -->
-  <section id="artwork" class="bg-obsidian-900/40 border-t border-slate-800/80 py-16">
+  <!-- Creative & Artwork Gallery: Realistic Charcoal & Pencil Sketches (Excluded from 1-Page Print CV) -->
+  <section id="artwork" class="bg-obsidian-900/40 border-t border-slate-800/80 py-16 no-print">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
         <div>
@@ -377,7 +457,7 @@
           <h2 class="text-2xl font-bold text-white">Realistic Charcoal &amp; Pencil Sketches</h2>
           <p class="text-sm text-slate-400 mt-1">Hand-drawn hyperrealistic graphite and charcoal portraits and tonal studies on paper. Click any sketch to inspect in full resolution.</p>
         </div>
-        <a href="https://t.me/sabonart" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-slate-700 bg-obsidian-850 text-xs font-medium text-slate-200 hover:border-sky-500/50 hover:text-sky-400 transition-colors self-start no-print">
+        <a href="https://t.me/sabonart" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg border border-slate-700 bg-obsidian-850 text-xs font-medium text-slate-200 hover:border-sky-500/50 hover:text-sky-400 transition-colors self-start">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
           </svg>
@@ -448,7 +528,7 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-10">
         <h2 class="text-2xl font-bold text-white">Education, Certifications &amp; Training</h2>
-        <p class="text-sm text-slate-400 mt-1">Academic foundation in engineering, verified developer credentials, and core banking architecture.</p>
+        <p class="text-sm text-slate-400 mt-1 no-print">Academic foundation in engineering, verified developer credentials, and core banking architecture.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -456,7 +536,7 @@
           <div class="text-xs font-mono text-sky-400 mb-1">Academic Degree</div>
           <h3 id="edu-degree" class="text-lg font-bold text-white">B.Sc. in Electrical &amp; Computer Engineering</h3>
           <p id="edu-university" class="text-sm font-medium text-slate-300 mt-1">Addis Ababa University &bull; Class of 2024</p>
-          <p id="edu-details" class="text-sm text-slate-400 mt-3 leading-relaxed">
+          <p id="edu-details" class="text-sm text-slate-400 mt-3 leading-relaxed print-hide-extra">
             Comprehensive engineering curriculum covering Computer Architecture, Data Structures &amp; Algorithms, Object-Oriented Software Engineering, Database Management Systems, Computer Networks, and Embedded/Distributed Systems.
           </p>
         </div>
@@ -465,7 +545,7 @@
           <div class="text-xs font-mono text-sky-400 mb-1">Enterprise Specialization</div>
           <h3 class="text-lg font-bold text-white">Temenos Transact (R16 to R26) Upgrade &amp; Technical Architecture</h3>
           <p class="text-sm font-medium text-slate-300 mt-1">Inlaks &amp; Temenos Technical Enablement &bull; 2026</p>
-          <p class="text-sm text-slate-400 mt-3 leading-relaxed">
+          <p class="text-sm text-slate-400 mt-3 leading-relaxed print-hide-extra">
             Specialized training covering TAFJ runtime architecture, L3 Java Extensibility hooks, Close of Business (COB) multi-threading, Temenos Web Services (TWS), and IRIS RESTful APIs.
           </p>
         </div>
@@ -473,16 +553,16 @@
 
       <!-- Verified Technical Certifications -->
       <div class="mt-8 pt-8 border-t border-slate-800/80">
-        <h3 class="text-xs font-mono uppercase tracking-wider text-sky-400 mb-4">Verified Technical Certifications</h3>
+        <h3 class="text-xs font-mono uppercase tracking-wider text-sky-400 mb-4 no-print">Verified Technical Certifications</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- freeCodeCamp -->
           <div class="border border-slate-800 rounded-xl p-5 bg-obsidian-850/90 flex items-center justify-between gap-4">
             <div>
               <div class="text-xs font-mono text-slate-400 mb-1">freeCodeCamp &bull; Issued March 4, 2023</div>
               <h4 class="text-sm font-bold text-white">Responsive Web Design Developer Certification</h4>
-              <p class="text-xs text-slate-400 mt-1">300 hours of coursework in semantic HTML5, modern CSS, Flexbox/Grid, and responsive UI architecture.</p>
+              <p class="text-xs text-slate-400 mt-1 print-hide-extra">300 hours of coursework in semantic HTML5, modern CSS, Flexbox/Grid, and responsive UI architecture.</p>
             </div>
-            <a href="https://freecodecamp.org/certification/SabonaTolasa/responsive-web-design" target="_blank" rel="noopener noreferrer" aria-label="Verify freeCodeCamp Certification" title="Verify Credential" class="shrink-0 px-3 py-1.5 rounded-lg border border-slate-700 bg-obsidian-950 text-xs font-mono text-sky-400 hover:border-sky-500/50 transition-colors">
+            <a href="https://freecodecamp.org/certification/SabonaTolasa/responsive-web-design" target="_blank" rel="noopener noreferrer" aria-label="Verify freeCodeCamp Certification" title="Verify Credential" class="shrink-0 px-3 py-1.5 rounded-lg border border-slate-700 bg-obsidian-950 text-xs font-mono text-sky-400 hover:border-sky-500/50 transition-colors no-print">
               Verify &rarr;
             </a>
           </div>
@@ -492,9 +572,9 @@
             <div>
               <div class="text-xs font-mono text-slate-400 mb-1">Cisco Networking Academy &amp; OpenEDG Python Institute &bull; Issued March 7, 2023</div>
               <h4 class="text-sm font-bold text-white">Python Essentials 1</h4>
-              <p class="text-xs text-slate-400 mt-1">Python 3 programming, algorithmic thinking, Python Standard Library scripting, and debugging.</p>
+              <p class="text-xs text-slate-400 mt-1 print-hide-extra">Python 3 programming, algorithmic thinking, Python Standard Library scripting, and debugging.</p>
             </div>
-            <span class="shrink-0 px-3 py-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-xs font-mono text-emerald-400">
+            <span class="shrink-0 px-3 py-1.5 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-xs font-mono text-emerald-400 no-print">
               Verified
             </span>
           </div>
@@ -507,7 +587,7 @@
   <section id="skills" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <div class="mb-10">
       <h2 class="text-2xl font-bold text-white">Technical Stack</h2>
-      <p class="text-sm text-slate-400 mt-1">Production languages, frameworks, databases, and enterprise middleware.</p>
+      <p class="text-sm text-slate-400 mt-1 no-print">Production languages, frameworks, databases, and enterprise middleware.</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -557,8 +637,8 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="bg-obsidian-900 border-t border-slate-800 py-16">
+  <!-- Contact Section (Excluded from 1-Page Print CV) -->
+  <section id="contact" class="bg-obsidian-900 border-t border-slate-800 py-16 no-print">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-8">
         <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-3">Connect with Sabona Tolasa</h2>
@@ -567,7 +647,7 @@
         </p>
       </div>
 
-      <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-6 sm:p-8 no-print">
+      <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-6 sm:p-8">
         <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleContact(event)" class="space-y-4">
           <input type="hidden" name="access_key" value="e80df2f0-7755-424a-a9be-0cf55182e54c" />
           <input type="hidden" name="subject" value="New Portfolio Message for Sabona Tolasa" />
@@ -592,12 +672,12 @@
     </div>
   </section>
 
-  <!-- Footer with Icon-Only Social Links -->
-  <footer class="bg-obsidian-950 text-slate-500 py-8 text-xs border-t border-slate-800/80">
+  <!-- Footer with Icon-Only Social Links (Excluded from 1-Page Print CV) -->
+  <footer class="bg-obsidian-950 text-slate-500 py-8 text-xs border-t border-slate-800/80 no-print">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div id="footer-copy">&copy; 2026 Sabona Tolasa. Core Banking Integration, Full-Stack &amp; AI Systems Engineer.</div>
 
-      <div class="flex items-center gap-4 no-print">
+      <div class="flex items-center gap-4">
         <!-- LinkedIn Icon -->
         <a href="https://www.linkedin.com/in/sabona-tolasa-1561a8210/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn" class="text-slate-400 hover:text-sky-400 transition-colors">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -623,7 +703,7 @@
           </svg>
         </a>
         <span class="text-slate-700">|</span>
-        <button onclick="openEditor()" class="text-slate-400 hover:text-sky-400 underline">Customize &amp; Export</button>
+        <button onclick="downloadOnePageCV()" class="text-slate-400 hover:text-sky-400 underline">Download 1-Page CV</button>
       </div>
     </div>
   </footer>
@@ -644,43 +724,14 @@
     </div>
   </div>
 
-  <!-- Interactive Customization Modal -->
-  <div id="editor-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 no-print">
-    <div class="bg-obsidian-900 rounded-xl max-w-lg w-full p-6 shadow-2xl border border-slate-700 max-h-[90vh] overflow-y-auto text-slate-200">
-      <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
-        <h3 class="text-lg font-bold text-white">Personalize Portfolio Details</h3>
-        <button onclick="closeEditor()" class="text-slate-400 hover:text-white text-xl leading-none">&times;</button>
-      </div>
-      <div class="space-y-3 text-sm">
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name</label>
-          <input id="inp-name" type="text" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="Sabona Tolasa" />
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Professional Headline</label>
-          <input id="inp-headline" type="text" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="Enterprise Java, Full-Stack & AI Systems Engineer" />
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Degree Title</label>
-          <input id="inp-degree" type="text" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="B.Sc. in Electrical & Computer Engineering" />
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">University &amp; Graduation Year</label>
-          <input id="inp-uni" type="text" class="w-full px-3 py-2 bg-obsidian-950 border border-slate-700 rounded-lg text-white" value="Addis Ababa University • Class of 2024" />
-        </div>
-      </div>
-      <div class="mt-6 flex items-center justify-end gap-2.5 pt-4 border-t border-slate-800">
-        <button onclick="applyEdits()" class="px-4 py-2 rounded-lg border border-slate-700 text-slate-300 text-xs font-semibold hover:bg-obsidian-800">
-          Apply Preview
-        </button>
-        <button onclick="applyAndDownload()" class="px-4 py-2 rounded-lg bg-sky-500 text-slate-950 text-xs font-semibold hover:bg-sky-400">
-          Download index.html
-        </button>
-      </div>
-    </div>
-  </div>
-
   <script>
+    function downloadOnePageCV() {
+      const originalTitle = document.title;
+      document.title = 'Sabona_Tolasa_CV';
+      window.print();
+      document.title = originalTitle;
+    }
+
     function filterProjects(category) {
       document.querySelectorAll('.proj-filter').forEach(btn => {
         if (btn.dataset.filter === category) {
@@ -703,58 +754,6 @@
 
     function closeLightbox() {
       document.getElementById('art-lightbox').classList.add('hidden');
-    }
-
-    function openEditor() {
-      document.getElementById('editor-modal').classList.remove('hidden');
-    }
-
-    function closeEditor() {
-      document.getElementById('editor-modal').classList.add('hidden');
-    }
-
-    function applyEdits() {
-      const name = document.getElementById('inp-name').value.trim();
-      const headline = document.getElementById('inp-headline').value.trim();
-      const degree = document.getElementById('inp-degree').value.trim();
-      const uni = document.getElementById('inp-uni').value.trim();
-
-      if (name) {
-        document.getElementById('nav-name').textContent = name;
-        document.getElementById('hero-name').textContent = name;
-        document.getElementById('snapshot-name').textContent = name;
-        document.getElementById('hero-status').textContent = name + ' • Core Banking Integration, Full-Stack & AI Evaluation Engineer';
-        document.title = name + ' | Core Banking Integration & Full-Stack Software Engineer';
-        document.getElementById('footer-copy').innerHTML = '&copy; 2026 ' + name + '. Core Banking Integration, Full-Stack &amp; AI Systems Engineer.';
-      }
-      if (headline) document.getElementById('hero-subtitle').textContent = headline;
-      if (degree) {
-        document.getElementById('edu-degree').textContent = degree;
-        document.getElementById('snapshot-edu').textContent = degree + (uni ? ' • ' + uni : '');
-      }
-      if (uni) document.getElementById('edu-university').textContent = uni;
-      closeEditor();
-    }
-
-    function exportHtml() {
-      const clone = document.documentElement.cloneNode(true);
-      const modal = clone.querySelector('#editor-modal');
-      const lightbox = clone.querySelector('#art-lightbox');
-      if (modal) modal.classList.add('hidden');
-      if (lightbox) lightbox.classList.add('hidden');
-      const htmlContent = '<!DOCTYPE html>\n' + clone.outerHTML;
-      const blob = new Blob([htmlContent], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'index.html';
-      a.click();
-      URL.revokeObjectURL(url);
-    }
-
-    function applyAndDownload() {
-      applyEdits();
-      exportHtml();
     }
 
     function isValidSenderEmail(email) {
