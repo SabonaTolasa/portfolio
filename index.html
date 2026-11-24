@@ -36,6 +36,95 @@
     }
   </script>
   <style>
+    /* Smooth Interactive Hover Motion across Cards, Fields, Buttons & Links */
+    .hover-card {
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                  border-color 0.25s ease,
+                  box-shadow 0.25s ease,
+                  background-color 0.25s ease;
+    }
+    .hover-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 12px 28px -10px rgba(14, 165, 233, 0.22);
+    }
+
+    .hover-field-group {
+      transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .hover-field-group:hover,
+    .hover-field-group:focus-within {
+      transform: translateX(4px);
+    }
+
+    .hover-input {
+      transition: transform 0.22s ease,
+                  border-color 0.22s ease,
+                  box-shadow 0.22s ease,
+                  background-color 0.22s ease;
+    }
+    .hover-input:hover {
+      border-color: rgba(56, 189, 248, 0.55);
+      background-color: #080c14;
+      box-shadow: 0 4px 16px -4px rgba(14, 165, 233, 0.18);
+    }
+    .hover-input:focus {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.18);
+    }
+
+    .hover-btn {
+      transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.2s ease,
+                  background-color 0.2s ease,
+                  border-color 0.2s ease,
+                  color 0.2s ease;
+    }
+    .hover-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -6px rgba(14, 165, 233, 0.35);
+    }
+    .hover-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .hover-nav-link {
+      position: relative;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .hover-nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background-color: #38bdf8;
+      transition: width 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .hover-nav-link:hover {
+      transform: translateY(-1px);
+    }
+    .hover-nav-link:hover::after {
+      width: 100%;
+    }
+
+    .hover-chip {
+      transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .hover-chip:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.5);
+      color: #7dd3fc;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hover-card, .hover-field-group, .hover-input, .hover-btn, .hover-nav-link, .hover-chip {
+        transition: none !important;
+        transform: none !important;
+      }
+    }
+
     @page {
       size: A4 portrait;
       margin: 10mm 12mm;
@@ -128,30 +217,30 @@
   <!-- Responsive Navigation -->
   <header class="sticky top-0 z-40 bg-obsidian-950/90 backdrop-blur-md border-b border-slate-800/80 no-print">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
-      <a href="#top" class="flex items-center gap-2.5 shrink-0">
-        <span class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/30 text-sky-400 font-mono text-xs font-semibold flex items-center justify-center tracking-wider">ST</span>
-        <span id="nav-name" class="font-semibold text-white tracking-tight text-sm sm:text-base">Sabona Tolasa</span>
+      <a href="#top" class="flex items-center gap-2.5 shrink-0 group">
+        <span class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/30 text-sky-400 font-mono text-xs font-semibold flex items-center justify-center tracking-wider transition-transform duration-200 group-hover:scale-105 group-hover:border-sky-400">ST</span>
+        <span id="nav-name" class="font-semibold text-white tracking-tight text-sm sm:text-base transition-colors group-hover:text-sky-400">Sabona Tolasa</span>
       </a>
 
       <!-- Desktop Links -->
       <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-400">
-        <a href="#about" class="hover:text-sky-400 transition-colors">Profile</a>
-        <a href="#experience" class="hover:text-sky-400 transition-colors">Experience</a>
-        <a href="#projects" class="hover:text-sky-400 transition-colors">Systems &amp; Projects</a>
-        <a href="#artwork" class="hover:text-sky-400 transition-colors">Artwork</a>
-        <a href="#education" class="hover:text-sky-400 transition-colors">Education</a>
-        <a href="#skills" class="hover:text-sky-400 transition-colors">Tech Stack</a>
+        <a href="#about" class="hover-nav-link hover:text-sky-400">Profile</a>
+        <a href="#experience" class="hover-nav-link hover:text-sky-400">Experience</a>
+        <a href="#projects" class="hover-nav-link hover:text-sky-400">Systems &amp; Projects</a>
+        <a href="#artwork" class="hover-nav-link hover:text-sky-400">Artwork</a>
+        <a href="#education" class="hover-nav-link hover:text-sky-400">Education</a>
+        <a href="#skills" class="hover-nav-link hover:text-sky-400">Tech Stack</a>
       </nav>
 
       <!-- Action Buttons + Mobile Hamburger -->
       <div class="flex items-center gap-2">
-        <button onclick="downloadOnePageCV()" class="hidden sm:inline-flex px-3 py-1.5 text-xs font-medium rounded-md border border-slate-700 bg-obsidian-900 text-slate-300 hover:border-sky-500/50 hover:text-sky-400 transition-colors">
+        <button onclick="downloadOnePageCV()" class="hover-btn hidden sm:inline-flex px-3 py-1.5 text-xs font-medium rounded-md border border-slate-700 bg-obsidian-900 text-slate-300 hover:border-sky-500/50 hover:text-sky-400">
           Download 1-Page CV
         </button>
-        <a href="#contact" class="px-3.5 py-2 text-xs font-semibold rounded-md bg-sky-500 text-slate-950 hover:bg-sky-400 transition-colors">
+        <a href="#contact" class="hover-btn px-3.5 py-2 text-xs font-semibold rounded-md bg-sky-500 text-slate-950 hover:bg-sky-400">
           Contact
         </a>
-        <button id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu" aria-expanded="false" class="lg:hidden w-10 h-10 rounded-md border border-slate-700 bg-obsidian-900 text-slate-300 hover:text-white flex items-center justify-center">
+        <button id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu" aria-expanded="false" class="hover-btn lg:hidden w-10 h-10 rounded-md border border-slate-700 bg-obsidian-900 text-slate-300 hover:text-white flex items-center justify-center">
           <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
           </svg>
@@ -164,14 +253,14 @@
 
     <!-- Collapsible Mobile Navigation Drawer -->
     <div id="mobile-menu" class="hidden lg:hidden bg-obsidian-900 border-b border-slate-800 px-4 pt-3 pb-5 space-y-2">
-      <a href="#about" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-obsidian-850 hover:text-sky-400">Profile</a>
-      <a href="#experience" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-obsidian-850 hover:text-sky-400">Experience</a>
-      <a href="#projects" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-obsidian-850 hover:text-sky-400">Systems &amp; Projects</a>
-      <a href="#artwork" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-obsidian-850 hover:text-sky-400">Realistic Sketches</a>
-      <a href="#education" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-obsidian-850 hover:text-sky-400">Education &amp; Certifications</a>
-      <a href="#skills" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 hover:bg-obsidian-850 hover:text-sky-400">Tech Stack</a>
+      <a href="#about" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 transition-all hover:translate-x-1 hover:bg-obsidian-850 hover:text-sky-400">Profile</a>
+      <a href="#experience" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 transition-all hover:translate-x-1 hover:bg-obsidian-850 hover:text-sky-400">Experience</a>
+      <a href="#projects" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 transition-all hover:translate-x-1 hover:bg-obsidian-850 hover:text-sky-400">Systems &amp; Projects</a>
+      <a href="#artwork" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 transition-all hover:translate-x-1 hover:bg-obsidian-850 hover:text-sky-400">Realistic Sketches</a>
+      <a href="#education" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 transition-all hover:translate-x-1 hover:bg-obsidian-850 hover:text-sky-400">Education &amp; Certifications</a>
+      <a href="#skills" onclick="closeMobileMenu()" class="block px-3 py-2 rounded-lg text-sm font-medium text-slate-300 transition-all hover:translate-x-1 hover:bg-obsidian-850 hover:text-sky-400">Tech Stack</a>
       <div class="pt-2 border-t border-slate-800">
-        <button onclick="closeMobileMenu(); downloadOnePageCV();" class="w-full py-2.5 px-3 rounded-lg border border-slate-700 bg-obsidian-850 text-xs font-semibold text-sky-400 text-center">
+        <button onclick="closeMobileMenu(); downloadOnePageCV();" class="hover-btn w-full py-2.5 px-3 rounded-lg border border-slate-700 bg-obsidian-850 text-xs font-semibold text-sky-400 text-center">
           Download 1-Page CV (PDF)
         </button>
       </div>
@@ -184,7 +273,7 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 relative">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         <div class="lg:col-span-8">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-5 no-print max-w-full">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-5 no-print max-w-full transition-transform duration-200 hover:translate-x-1">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
             <span id="hero-status" class="truncate">Sabona Tolasa &bull; Core Banking, Full-Stack &amp; AI Engineer</span>
           </div>
@@ -200,41 +289,41 @@
 
           <!-- Responsive Primary CTAs + Icon-Only Social Links -->
           <div class="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 no-print">
-            <a href="#projects" class="px-5 py-3 sm:py-2.5 rounded-lg bg-sky-500 text-slate-950 text-sm font-semibold hover:bg-sky-400 transition-colors text-center">
+            <a href="#projects" class="hover-btn px-5 py-3 sm:py-2.5 rounded-lg bg-sky-500 text-slate-950 text-sm font-semibold hover:bg-sky-400 text-center">
               View Case Studies
             </a>
-            <button onclick="downloadOnePageCV()" class="px-4 py-3 sm:py-2.5 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-200 text-sm font-medium hover:border-slate-500 transition-colors text-center">
+            <button onclick="downloadOnePageCV()" class="hover-btn px-4 py-3 sm:py-2.5 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-200 text-sm font-medium hover:border-sky-500/50 hover:text-sky-400 text-center">
               Download 1-Page CV (PDF)
             </button>
 
             <!-- Social Icon Bar (Touch-friendly 44x44px targets) -->
             <div class="flex items-center justify-start gap-2.5 pt-1 sm:pt-0 sm:pl-1">
               <!-- LinkedIn Icon -->
-              <a href="https://www.linkedin.com/in/sabona-tolasa-1561a8210/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" title="LinkedIn" class="w-11 h-11 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-300 hover:text-sky-400 hover:border-sky-500/50 flex items-center justify-center transition-colors">
+              <a href="https://www.linkedin.com/in/sabona-tolasa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" title="LinkedIn" class="hover-btn w-11 h-11 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-300 hover:text-sky-400 hover:border-sky-500/50 flex items-center justify-center">
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/>
                 </svg>
               </a>
               <!-- Telegram Channel Icon -->
-              <a href="https://t.me/sabonart" target="_blank" rel="noopener noreferrer" aria-label="Telegram Channel" title="Telegram Channel" class="w-11 h-11 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-300 hover:text-sky-400 hover:border-sky-500/50 flex items-center justify-center transition-colors">
+              <a href="https://t.me/sabonart" target="_blank" rel="noopener noreferrer" aria-label="Telegram Channel" title="Telegram Channel" class="hover-btn w-11 h-11 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-300 hover:text-sky-400 hover:border-sky-500/50 flex items-center justify-center">
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                 </svg>
               </a>
               <!-- GitHub Icon -->
-              <a href="https://github.com/SabonaTolasa" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" title="GitHub" class="w-11 h-11 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-300 hover:text-sky-400 hover:border-sky-500/50 flex items-center justify-center transition-colors">
+              <a href="https://github.com/SabonaTolasa" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" title="GitHub" class="hover-btn w-11 h-11 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-300 hover:text-sky-400 hover:border-sky-500/50 flex items-center justify-center">
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
                 </svg>
               </a>
               <!-- Artwork Gallery Icon -->
-              <a href="#artwork" aria-label="Realistic Charcoal & Pencil Sketch Gallery" title="Charcoal & Pencil Sketches" class="w-11 h-11 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-300 hover:text-sky-400 hover:border-sky-500/50 flex items-center justify-center transition-colors">
+              <a href="#artwork" aria-label="Realistic Charcoal & Pencil Sketch Gallery" title="Charcoal & Pencil Sketches" class="hover-btn w-11 h-11 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-300 hover:text-sky-400 hover:border-sky-500/50 flex items-center justify-center">
                 <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
               </a>
               <!-- Direct Message Icon -->
-              <a href="#contact" aria-label="Send Direct Message" title="Send Direct Message" class="w-11 h-11 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-300 hover:text-sky-400 hover:border-sky-500/50 flex items-center justify-center transition-colors">
+              <a href="#contact" aria-label="Send Direct Message" title="Send Direct Message" class="hover-btn w-11 h-11 rounded-lg border border-slate-700 bg-obsidian-850 text-slate-300 hover:text-sky-400 hover:border-sky-500/50 flex items-center justify-center">
                 <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
@@ -245,27 +334,27 @@
 
         <!-- Executive Snapshot Card -->
         <div class="lg:col-span-4">
-          <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-5 sm:p-6 space-y-3.5 sm:space-y-4 shadow-2xl">
+          <div class="hover-card bg-obsidian-850 border border-slate-800 rounded-xl p-5 sm:p-6 space-y-3.5 sm:space-y-4 shadow-2xl">
             <div class="text-xs font-mono uppercase tracking-wider text-sky-400 border-b border-slate-800 pb-2.5">
               <span>Engineering Snapshot</span>
             </div>
-            <div>
+            <div class="transition-transform duration-200 hover:translate-x-1">
               <div class="text-xs text-slate-500">Engineer</div>
               <div id="snapshot-name" class="text-sm font-semibold text-white">Sabona Tolasa</div>
             </div>
-            <div>
+            <div class="transition-transform duration-200 hover:translate-x-1">
               <div class="text-xs text-slate-500">Primary Domains</div>
               <div class="text-sm font-semibold text-slate-200">Core Banking, Full-Stack &amp; AI Evaluation</div>
             </div>
-            <div>
+            <div class="transition-transform duration-200 hover:translate-x-1">
               <div class="text-xs text-slate-500">Core Stack</div>
               <div class="text-sm font-semibold text-slate-200">Enterprise Java, Spring Boot, React/TypeScript, Python, SQL</div>
             </div>
-            <div>
+            <div class="transition-transform duration-200 hover:translate-x-1">
               <div class="text-xs text-slate-500">Platforms &amp; Remote Experience</div>
               <div class="text-sm font-semibold text-slate-200">Temenos Transact, TAFJ, Enterprise App Servers, Turing, MathMaster</div>
             </div>
-            <div>
+            <div class="transition-transform duration-200 hover:translate-x-1">
               <div class="text-xs text-slate-500">Education</div>
               <div id="snapshot-edu" class="text-sm font-semibold text-slate-200">B.Sc. Electrical &amp; Computer Engineering &bull; Addis Ababa University (2024)</div>
             </div>
@@ -303,7 +392,7 @@
 
       <div class="space-y-5 sm:space-y-6">
         <!-- Role 1: Core Banking -->
-        <div class="border border-slate-800 rounded-xl p-5 sm:p-8 bg-obsidian-850/90">
+        <div class="hover-card border border-slate-800 rounded-xl p-5 sm:p-8 bg-obsidian-850/90">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
               <h3 class="text-base sm:text-lg font-bold text-white">Core Banking Integration &amp; Enterprise Java Engineer</h3>
@@ -322,7 +411,7 @@
         </div>
 
         <!-- Role 2: Full-Stack Developer -->
-        <div class="border border-slate-800 rounded-xl p-5 sm:p-8 bg-obsidian-850/90">
+        <div class="hover-card border border-slate-800 rounded-xl p-5 sm:p-8 bg-obsidian-850/90">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
               <h3 class="text-base sm:text-lg font-bold text-white">Full-Stack Software Developer</h3>
@@ -340,7 +429,7 @@
         </div>
 
         <!-- Role 3: Turing -->
-        <div class="border border-slate-800 rounded-xl p-5 sm:p-8 bg-obsidian-850/90">
+        <div class="hover-card border border-slate-800 rounded-xl p-5 sm:p-8 bg-obsidian-850/90">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
               <h3 class="text-base sm:text-lg font-bold text-white">Remote AI &amp; Technical Evaluation Engineer</h3>
@@ -358,7 +447,7 @@
         </div>
 
         <!-- Role 4: MathMaster -->
-        <div class="border border-slate-800 rounded-xl p-5 sm:p-8 bg-obsidian-850/90">
+        <div class="hover-card border border-slate-800 rounded-xl p-5 sm:p-8 bg-obsidian-850/90">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
               <h3 class="text-base sm:text-lg font-bold text-white">Math Expert (Top Performer)</h3>
@@ -385,16 +474,16 @@
         <p class="text-sm text-slate-400 mt-1">Production architectures spanning core banking modernization, full-stack platforms, and AI evaluation.</p>
       </div>
       <div class="flex flex-wrap gap-2 no-print">
-        <button onclick="filterProjects('all')" class="proj-filter active px-3.5 py-2 text-xs font-semibold rounded-md bg-sky-500 text-slate-950" data-filter="all">All</button>
-        <button onclick="filterProjects('banking')" class="proj-filter px-3.5 py-2 text-xs font-medium rounded-md bg-obsidian-900 border border-slate-700 text-slate-300 hover:border-slate-500" data-filter="banking">Core Banking</button>
-        <button onclick="filterProjects('fullstack')" class="proj-filter px-3.5 py-2 text-xs font-medium rounded-md bg-obsidian-900 border border-slate-700 text-slate-300 hover:border-slate-500" data-filter="fullstack">Full-Stack</button>
-        <button onclick="filterProjects('ai')" class="proj-filter px-3.5 py-2 text-xs font-medium rounded-md bg-obsidian-900 border border-slate-700 text-slate-300 hover:border-slate-500" data-filter="ai">AI &amp; STEM</button>
+        <button onclick="filterProjects('all')" class="hover-btn proj-filter active px-3.5 py-2 text-xs font-semibold rounded-md bg-sky-500 text-slate-950" data-filter="all">All</button>
+        <button onclick="filterProjects('banking')" class="hover-btn proj-filter px-3.5 py-2 text-xs font-medium rounded-md bg-obsidian-900 border border-slate-700 text-slate-300 hover:border-slate-500" data-filter="banking">Core Banking</button>
+        <button onclick="filterProjects('fullstack')" class="hover-btn proj-filter px-3.5 py-2 text-xs font-medium rounded-md bg-obsidian-900 border border-slate-700 text-slate-300 hover:border-slate-500" data-filter="fullstack">Full-Stack</button>
+        <button onclick="filterProjects('ai')" class="hover-btn proj-filter px-3.5 py-2 text-xs font-medium rounded-md bg-obsidian-900 border border-slate-700 text-slate-300 hover:border-slate-500" data-filter="ai">AI &amp; STEM</button>
       </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projects-grid">
       <!-- Project 1 -->
-      <article class="project-card bg-obsidian-850 border border-slate-800 rounded-xl p-5 sm:p-6 flex flex-col justify-between hover:border-sky-500/40 transition-colors" data-category="banking">
+      <article class="hover-card project-card bg-obsidian-850 border border-slate-800 rounded-xl p-5 sm:p-6 flex flex-col justify-between" data-category="banking">
         <div>
           <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
             <span class="text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400">Enterprise Java / Core Banking</span>
@@ -406,15 +495,15 @@
           </p>
         </div>
         <div class="pt-4 border-t border-slate-800 flex flex-wrap gap-1.5">
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Enterprise Java</span>
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Python</span>
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Cryptography</span>
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Static Analysis</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Enterprise Java</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Python</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Cryptography</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Static Analysis</span>
         </div>
       </article>
 
       <!-- Project 2 -->
-      <article class="project-card bg-obsidian-850 border border-slate-800 rounded-xl p-5 sm:p-6 flex flex-col justify-between hover:border-sky-500/40 transition-colors" data-category="banking">
+      <article class="hover-card project-card bg-obsidian-850 border border-slate-800 rounded-xl p-5 sm:p-6 flex flex-col justify-between" data-category="banking">
         <div>
           <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
             <span class="text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400">Middleware &amp; Infrastructure</span>
@@ -426,15 +515,15 @@
           </p>
         </div>
         <div class="pt-4 border-t border-slate-800 flex flex-wrap gap-1.5">
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Temenos TAFJ</span>
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">IRIS &amp; OFS APIs</span>
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">SQL Server</span>
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Automation</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Temenos TAFJ</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">IRIS &amp; OFS APIs</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">SQL Server</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Automation</span>
         </div>
       </article>
 
       <!-- Project 3 -->
-      <article class="project-card bg-obsidian-850 border border-slate-800 rounded-xl p-5 sm:p-6 flex flex-col justify-between hover:border-emerald-500/40 transition-colors" data-category="fullstack">
+      <article class="hover-card project-card bg-obsidian-850 border border-slate-800 rounded-xl p-5 sm:p-6 flex flex-col justify-between" data-category="fullstack">
         <div>
           <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
             <span class="text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">Full-Stack Web Platform</span>
@@ -446,15 +535,15 @@
           </p>
         </div>
         <div class="pt-4 border-t border-slate-800 flex flex-wrap gap-1.5">
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">React</span>
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">TypeScript</span>
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Spring Boot</span>
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">PostgreSQL</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">React</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">TypeScript</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Spring Boot</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">PostgreSQL</span>
         </div>
       </article>
 
       <!-- Project 4 -->
-      <article class="project-card bg-obsidian-850 border border-slate-800 rounded-xl p-5 sm:p-6 flex flex-col justify-between hover:border-purple-500/40 transition-colors" data-category="ai">
+      <article class="hover-card project-card bg-obsidian-850 border border-slate-800 rounded-xl p-5 sm:p-6 flex flex-col justify-between" data-category="ai">
         <div>
           <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
             <span class="text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-purple-400">AI &amp; STEM Evaluation</span>
@@ -466,10 +555,10 @@
           </p>
         </div>
         <div class="pt-4 border-t border-slate-800 flex flex-wrap gap-1.5">
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">LLM Evaluation</span>
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Python</span>
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">LaTeX</span>
-          <span class="text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Rubric Architecture</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">LLM Evaluation</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Python</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">LaTeX</span>
+          <span class="hover-chip text-xs font-mono px-2 py-0.5 bg-obsidian-950 border border-slate-800 text-slate-300 rounded">Rubric Architecture</span>
         </div>
       </article>
     </div>
@@ -484,7 +573,7 @@
           <h2 class="text-2xl font-bold text-white">Realistic Charcoal &amp; Pencil Sketches</h2>
           <p class="text-sm text-slate-400 mt-1">Hand-drawn hyperrealistic graphite and charcoal portraits and tonal studies on paper. Tap any sketch to inspect in full resolution.</p>
         </div>
-        <a href="https://t.me/sabonart" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-700 bg-obsidian-850 text-xs font-medium text-slate-200 hover:border-sky-500/50 hover:text-sky-400 transition-colors self-start">
+        <a href="https://t.me/sabonart" target="_blank" rel="noopener noreferrer" class="hover-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-700 bg-obsidian-850 text-xs font-medium text-slate-200 hover:border-sky-500/50 hover:text-sky-400 self-start">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
           </svg>
@@ -494,7 +583,7 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Sketch Card 1 -->
-        <div onclick="openLightbox('art-1.jpg', 'Realistic Portrait Study I', 'Charcoal &amp; Graphite Pencil on Paper')" class="group cursor-pointer bg-obsidian-850 border border-slate-800 rounded-xl overflow-hidden hover:border-sky-500/40 transition-all">
+        <div onclick="openLightbox('art-1.jpg', 'Realistic Portrait Study I', 'Charcoal &amp; Graphite Pencil on Paper')" class="hover-card group cursor-pointer bg-obsidian-850 border border-slate-800 rounded-xl overflow-hidden">
           <div class="aspect-[4/3] bg-obsidian-950 relative overflow-hidden flex items-center justify-center">
             <img src="art-1.jpg" alt="Realistic Portrait Study I - Charcoal and Pencil Sketch" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 transition-transform duration-300" />
             <div style="display:none;" class="flex-col items-center justify-center text-center p-6 text-slate-500">
@@ -512,7 +601,7 @@
         </div>
 
         <!-- Sketch Card 2 -->
-        <div onclick="openLightbox('art-2.jpg', 'Realistic Tonal &amp; Light Study II', 'Fine Graphite &amp; Charcoal Pencil Sketch')" class="group cursor-pointer bg-obsidian-850 border border-slate-800 rounded-xl overflow-hidden hover:border-sky-500/40 transition-all">
+        <div onclick="openLightbox('art-2.jpg', 'Realistic Tonal &amp; Light Study II', 'Fine Graphite &amp; Charcoal Pencil Sketch')" class="hover-card group cursor-pointer bg-obsidian-850 border border-slate-800 rounded-xl overflow-hidden">
           <div class="aspect-[4/3] bg-obsidian-950 relative overflow-hidden flex items-center justify-center">
             <img src="art-2.jpg" alt="Realistic Tonal and Light Study II - Charcoal and Pencil Sketch" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 transition-transform duration-300" />
             <div style="display:none;" class="flex-col items-center justify-center text-center p-6 text-slate-500">
@@ -530,7 +619,7 @@
         </div>
 
         <!-- Sketch Card 3 -->
-        <div onclick="openLightbox('art-3.jpg', 'Realistic Expression &amp; Texture Study III', 'Charcoal &amp; Pencil Shading on Paper')" class="group cursor-pointer bg-obsidian-850 border border-slate-800 rounded-xl overflow-hidden hover:border-sky-500/40 transition-all">
+        <div onclick="openLightbox('art-3.jpg', 'Realistic Expression &amp; Texture Study III', 'Charcoal &amp; Pencil Shading on Paper')" class="hover-card group cursor-pointer bg-obsidian-850 border border-slate-800 rounded-xl overflow-hidden">
           <div class="aspect-[4/3] bg-obsidian-950 relative overflow-hidden flex items-center justify-center">
             <img src="art-3.jpg" alt="Realistic Expression and Texture Study III - Charcoal and Pencil Sketch" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-full h-full object-cover grayscale contrast-110 group-hover:scale-105 transition-transform duration-300" />
             <div style="display:none;" class="flex-col items-center justify-center text-center p-6 text-slate-500">
@@ -559,7 +648,7 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="border border-slate-800 rounded-xl p-5 sm:p-6 bg-obsidian-850/90">
+        <div class="hover-card border border-slate-800 rounded-xl p-5 sm:p-6 bg-obsidian-850/90">
           <div class="text-xs font-mono text-sky-400 mb-1">Academic Degree</div>
           <h3 id="edu-degree" class="text-base sm:text-lg font-bold text-white">B.Sc. in Electrical &amp; Computer Engineering</h3>
           <p id="edu-university" class="text-sm font-medium text-slate-300 mt-1">Addis Ababa University &bull; Class of 2024</p>
@@ -568,7 +657,7 @@
           </p>
         </div>
 
-        <div class="border border-slate-800 rounded-xl p-5 sm:p-6 bg-obsidian-850/90">
+        <div class="hover-card border border-slate-800 rounded-xl p-5 sm:p-6 bg-obsidian-850/90">
           <div class="text-xs font-mono text-sky-400 mb-1">Enterprise Specialization</div>
           <h3 class="text-base sm:text-lg font-bold text-white">Temenos Transact &amp; Core Banking Technical Architecture</h3>
           <p class="text-sm font-medium text-slate-300 mt-1">Core Banking Technical Enablement</p>
@@ -583,19 +672,19 @@
         <h3 class="text-xs font-mono uppercase tracking-wider text-sky-400 mb-4 no-print">Verified Technical Certifications</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- freeCodeCamp -->
-          <div class="border border-slate-800 rounded-xl p-5 bg-obsidian-850/90 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="hover-card border border-slate-800 rounded-xl p-5 bg-obsidian-850/90 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div class="text-xs font-mono text-slate-400 mb-1">freeCodeCamp &bull; Issued March 4, 2023</div>
               <h4 class="text-sm font-bold text-white">Responsive Web Design Developer Certification</h4>
               <p class="text-xs text-slate-400 mt-1 print-hide-extra">300 hours of coursework in semantic HTML5, modern CSS, Flexbox/Grid, and responsive UI architecture.</p>
             </div>
-            <a href="https://freecodecamp.org/certification/SabonaTolasa/responsive-web-design" target="_blank" rel="noopener noreferrer" aria-label="Verify freeCodeCamp Certification" title="Verify Credential" class="self-start sm:self-center shrink-0 px-3.5 py-2 rounded-lg border border-slate-700 bg-obsidian-950 text-xs font-mono text-sky-400 hover:border-sky-500/50 transition-colors no-print">
+            <a href="https://freecodecamp.org/certification/SabonaTolasa/responsive-web-design" target="_blank" rel="noopener noreferrer" aria-label="Verify freeCodeCamp Certification" title="Verify Credential" class="hover-btn self-start sm:self-center shrink-0 px-3.5 py-2 rounded-lg border border-slate-700 bg-obsidian-950 text-xs font-mono text-sky-400 hover:border-sky-500/50 no-print">
               Verify &rarr;
             </a>
           </div>
 
           <!-- Cisco Networking Academy & OpenEDG Python Institute -->
-          <div class="border border-slate-800 rounded-xl p-5 bg-obsidian-850/90 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="hover-card border border-slate-800 rounded-xl p-5 bg-obsidian-850/90 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div class="text-xs font-mono text-slate-400 mb-1">Cisco Networking Academy &amp; OpenEDG Python Institute &bull; Issued March 7, 2023</div>
               <h4 class="text-sm font-bold text-white">Python Essentials 1</h4>
@@ -618,47 +707,47 @@
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-      <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-5">
+      <div class="hover-card bg-obsidian-850 border border-slate-800 rounded-xl p-5">
         <h3 class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3">Backend &amp; Enterprise</h3>
         <ul class="space-y-2 text-sm text-slate-300">
-          <li>Enterprise Java &amp; OOP</li>
-          <li>Spring Boot &amp; Spring Security</li>
-          <li>Python (Automation &amp; FastAPI)</li>
-          <li>Node.js &amp; Express</li>
-          <li>RESTful APIs, SOAP &amp; OFS</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Enterprise Java &amp; OOP</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Spring Boot &amp; Spring Security</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Python (Automation &amp; FastAPI)</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Node.js &amp; Express</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">RESTful APIs, SOAP &amp; OFS</li>
         </ul>
       </div>
 
-      <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-5">
+      <div class="hover-card bg-obsidian-850 border border-slate-800 rounded-xl p-5">
         <h3 class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3">Frontend &amp; Fine Art</h3>
         <ul class="space-y-2 text-sm text-slate-300">
-          <li>TypeScript &amp; Modern JavaScript</li>
-          <li>React &amp; Next.js</li>
-          <li>HTML5 &amp; Tailwind CSS</li>
-          <li>Realistic Charcoal &amp; Pencil Sketching</li>
-          <li>LaTeX &amp; Technical Authoring</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">TypeScript &amp; Modern JavaScript</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">React &amp; Next.js</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">HTML5 &amp; Tailwind CSS</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Realistic Charcoal &amp; Pencil Sketching</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">LaTeX &amp; Technical Authoring</li>
         </ul>
       </div>
 
-      <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-5">
+      <div class="hover-card bg-obsidian-850 border border-slate-800 rounded-xl p-5">
         <h3 class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3">Core Banking &amp; Middleware</h3>
         <ul class="space-y-2 text-sm text-slate-300">
-          <li>Temenos Transact</li>
-          <li>Temenos TAFJ &amp; Java Extensibility</li>
-          <li>Enterprise Java App Servers</li>
-          <li>Temenos IRIS &amp; TWS</li>
-          <li>Batch Processing &amp; High Availability</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Temenos Transact</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Temenos TAFJ &amp; Java Extensibility</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Enterprise Java App Servers</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Temenos IRIS &amp; TWS</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Batch Processing &amp; High Availability</li>
         </ul>
       </div>
 
-      <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-5">
+      <div class="hover-card bg-obsidian-850 border border-slate-800 rounded-xl p-5">
         <h3 class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3">Data, Math &amp; DevOps</h3>
         <ul class="space-y-2 text-sm text-slate-300">
-          <li>Microsoft SQL Server</li>
-          <li>PostgreSQL &amp; MySQL</li>
-          <li>Quantitative &amp; Mathematical Modeling</li>
-          <li>Scripting, Git &amp; Docker</li>
-          <li>Cloud Deployment &amp; CI/CD</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Microsoft SQL Server</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">PostgreSQL &amp; MySQL</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Quantitative &amp; Mathematical Modeling</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Scripting, Git &amp; Docker</li>
+          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Cloud Deployment &amp; CI/CD</li>
         </ul>
       </div>
     </div>
@@ -674,23 +763,23 @@
         </p>
       </div>
 
-      <div class="bg-obsidian-850 border border-slate-800 rounded-xl p-5 sm:p-8">
+      <div class="hover-card bg-obsidian-850 border border-slate-800 rounded-xl p-5 sm:p-8">
         <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleContact(event)" class="space-y-4">
           <input type="hidden" name="access_key" value="e80df2f0-7755-424a-a9be-0cf55182e54c" />
           <input type="hidden" name="subject" value="New Portfolio Message for Sabona Tolasa" />
-          <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1.5">Your Name</label>
-            <input type="text" name="name" required placeholder="Enter your full name" class="w-full px-3.5 py-2.5 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-500" />
+          <div class="hover-field-group group">
+            <label class="block text-xs font-medium text-slate-300 mb-1.5 transition-colors group-hover:text-sky-400 group-focus-within:text-sky-400">Your Name</label>
+            <input type="text" name="name" required placeholder="Enter your full name" class="hover-input w-full px-3.5 py-2.5 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none" />
           </div>
-          <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1.5">Your Email Address (for reply)</label>
-            <input type="email" name="email" required placeholder="you@company.com" class="w-full px-3.5 py-2.5 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-500" />
+          <div class="hover-field-group group">
+            <label class="block text-xs font-medium text-slate-300 mb-1.5 transition-colors group-hover:text-sky-400 group-focus-within:text-sky-400">Your Email Address (for reply)</label>
+            <input type="email" name="email" required placeholder="you@company.com" class="hover-input w-full px-3.5 py-2.5 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none" />
           </div>
-          <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1.5">Message</label>
-            <textarea name="message" rows="4" required placeholder="Project scope, full-stack role, core banking consulting, or portrait sketch commission..." class="w-full px-3.5 py-2.5 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none focus:border-sky-500"></textarea>
+          <div class="hover-field-group group">
+            <label class="block text-xs font-medium text-slate-300 mb-1.5 transition-colors group-hover:text-sky-400 group-focus-within:text-sky-400">Message</label>
+            <textarea name="message" rows="4" required placeholder="Project scope, full-stack role, core banking consulting, or portrait sketch commission..." class="hover-input w-full px-3.5 py-2.5 rounded-lg bg-obsidian-950 border border-slate-700 text-sm text-white focus:outline-none"></textarea>
           </div>
-          <button id="submit-btn" type="submit" class="w-full py-3 px-4 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 text-sm font-semibold transition-colors">
+          <button id="submit-btn" type="submit" class="hover-btn w-full py-3 px-4 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 text-sm font-semibold">
             Send Message
           </button>
           <p id="form-feedback" class="text-xs text-emerald-400 hidden"></p>
@@ -706,31 +795,31 @@
 
       <div class="flex items-center gap-4">
         <!-- LinkedIn Icon -->
-        <a href="https://www.linkedin.com/in/sabona-tolasa-1561a8210/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn" class="p-1.5 text-slate-400 hover:text-sky-400 transition-colors">
+        <a href="https://www.linkedin.com/in/sabona-tolasa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn" class="p-1.5 text-slate-400 hover:text-sky-400 transition-transform duration-200 hover:-translate-y-0.5">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z"/>
           </svg>
         </a>
         <!-- Telegram Channel Icon -->
-        <a href="https://t.me/sabonart" target="_blank" rel="noopener noreferrer" aria-label="Telegram Channel" title="Telegram Channel" class="p-1.5 text-slate-400 hover:text-sky-400 transition-colors">
+        <a href="https://t.me/sabonart" target="_blank" rel="noopener noreferrer" aria-label="Telegram Channel" title="Telegram Channel" class="p-1.5 text-slate-400 hover:text-sky-400 transition-transform duration-200 hover:-translate-y-0.5">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
             <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
           </svg>
         </a>
         <!-- GitHub Icon -->
-        <a href="https://github.com/SabonaTolasa" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub" class="p-1.5 text-slate-400 hover:text-sky-400 transition-colors">
+        <a href="https://github.com/SabonaTolasa" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub" class="p-1.5 text-slate-400 hover:text-sky-400 transition-transform duration-200 hover:-translate-y-0.5">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
           </svg>
         </a>
         <!-- Message Icon -->
-        <a href="#contact" aria-label="Message" title="Send Direct Message" class="p-1.5 text-slate-400 hover:text-sky-400 transition-colors">
+        <a href="#contact" aria-label="Message" title="Send Direct Message" class="p-1.5 text-slate-400 hover:text-sky-400 transition-transform duration-200 hover:-translate-y-0.5">
           <svg class="w-5 h-5 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
           </svg>
         </a>
         <span class="text-slate-700">|</span>
-        <button onclick="downloadOnePageCV()" class="text-slate-400 hover:text-sky-400 underline py-1">Download 1-Page CV</button>
+        <button onclick="downloadOnePageCV()" class="text-slate-400 hover:text-sky-400 underline py-1 transition-transform duration-200 hover:-translate-y-0.5">Download 1-Page CV</button>
       </div>
     </div>
   </footer>
@@ -787,9 +876,9 @@
     function filterProjects(category) {
       document.querySelectorAll('.proj-filter').forEach(btn => {
         if (btn.dataset.filter === category) {
-          btn.className = 'proj-filter active px-3.5 py-2 text-xs font-semibold rounded-md bg-sky-500 text-slate-950';
+          btn.className = 'hover-btn proj-filter active px-3.5 py-2 text-xs font-semibold rounded-md bg-sky-500 text-slate-950';
         } else {
-          btn.className = 'proj-filter px-3.5 py-2 text-xs font-medium rounded-md bg-obsidian-900 border border-slate-700 text-slate-300 hover:border-slate-500';
+          btn.className = 'hover-btn proj-filter px-3.5 py-2 text-xs font-medium rounded-md bg-obsidian-900 border border-slate-700 text-slate-300 hover:border-slate-500';
         }
       });
       document.querySelectorAll('.project-card').forEach(card => {
