@@ -36,7 +36,45 @@
     }
   </script>
   <style>
-    /* Smooth Interactive Hover Motion across Cards, Fields, Buttons & Links */
+    /* Smooth Interactive Hover Motion across Titles, Headings, Cards, Fields & Buttons */
+    .hover-title {
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                  color 0.25s ease,
+                  text-shadow 0.25s ease;
+    }
+    .hover-title:hover {
+      transform: translateX(6px);
+      color: #38bdf8;
+      text-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
+    }
+
+    .hover-heading {
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                  color 0.25s ease;
+    }
+    .hover-heading:hover {
+      transform: translateX(5px);
+      color: #38bdf8;
+    }
+
+    .hover-text-block {
+      transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+                  color 0.22s ease;
+    }
+    .hover-text-block:hover {
+      transform: translateX(4px);
+      color: #f1f5f9;
+    }
+
+    .hover-bullet {
+      transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+                  color 0.2s ease;
+    }
+    .hover-bullet:hover {
+      transform: translateX(5px);
+      color: #ffffff;
+    }
+
     .hover-card {
       transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
                   border-color 0.25s ease,
@@ -119,6 +157,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      .hover-title, .hover-heading, .hover-text-block, .hover-bullet,
       .hover-card, .hover-field-group, .hover-input, .hover-btn, .hover-nav-link, .hover-chip {
         transition: none !important;
         transform: none !important;
@@ -273,17 +312,17 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 relative">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         <div class="lg:col-span-8">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-5 no-print max-w-full transition-transform duration-200 hover:translate-x-1">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/20 text-sky-400 text-xs font-medium mb-5 no-print max-w-full transition-all duration-200 hover:translate-x-1 hover:border-sky-400/50 cursor-default">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
             <span id="hero-status" class="truncate">Sabona Tolasa &bull; Core Banking, Full-Stack &amp; AI Engineer</span>
           </div>
-          <h1 id="hero-name" class="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight mb-2 sm:mb-3">
+          <h1 id="hero-name" class="hover-title text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight mb-2 sm:mb-3 cursor-default">
             Sabona Tolasa
           </h1>
-          <p id="hero-subtitle" class="text-base sm:text-xl font-medium text-sky-400 mb-4 sm:mb-5">
+          <p id="hero-subtitle" class="hover-text-block text-base sm:text-xl font-medium text-sky-400 mb-4 sm:mb-5 cursor-default">
             Enterprise Java, Full-Stack &amp; AI Systems Engineer
           </p>
-          <p id="hero-summary" class="text-sm sm:text-lg text-slate-400 leading-relaxed max-w-3xl mb-7 sm:mb-8">
+          <p id="hero-summary" class="hover-text-block text-sm sm:text-lg text-slate-400 leading-relaxed max-w-3xl mb-7 sm:mb-8 cursor-default">
             Electrical &amp; Computer Engineering graduate (Addis Ababa University, Class of 2024) specializing in mission-critical core banking integrations, enterprise Java modernization, scalable full-stack web applications, and rigorous AI/STEM evaluation engineering.
           </p>
 
@@ -335,26 +374,26 @@
         <!-- Executive Snapshot Card -->
         <div class="lg:col-span-4">
           <div class="hover-card bg-obsidian-850 border border-slate-800 rounded-xl p-5 sm:p-6 space-y-3.5 sm:space-y-4 shadow-2xl">
-            <div class="text-xs font-mono uppercase tracking-wider text-sky-400 border-b border-slate-800 pb-2.5">
+            <div class="hover-heading text-xs font-mono uppercase tracking-wider text-sky-400 border-b border-slate-800 pb-2.5 cursor-default">
               <span>Engineering Snapshot</span>
             </div>
-            <div class="transition-transform duration-200 hover:translate-x-1">
+            <div class="transition-transform duration-200 hover:translate-x-1.5 cursor-default">
               <div class="text-xs text-slate-500">Engineer</div>
               <div id="snapshot-name" class="text-sm font-semibold text-white">Sabona Tolasa</div>
             </div>
-            <div class="transition-transform duration-200 hover:translate-x-1">
+            <div class="transition-transform duration-200 hover:translate-x-1.5 cursor-default">
               <div class="text-xs text-slate-500">Primary Domains</div>
               <div class="text-sm font-semibold text-slate-200">Core Banking, Full-Stack &amp; AI Evaluation</div>
             </div>
-            <div class="transition-transform duration-200 hover:translate-x-1">
+            <div class="transition-transform duration-200 hover:translate-x-1.5 cursor-default">
               <div class="text-xs text-slate-500">Core Stack</div>
               <div class="text-sm font-semibold text-slate-200">Enterprise Java, Spring Boot, React/TypeScript, Python, SQL</div>
             </div>
-            <div class="transition-transform duration-200 hover:translate-x-1">
+            <div class="transition-transform duration-200 hover:translate-x-1.5 cursor-default">
               <div class="text-xs text-slate-500">Platforms &amp; Remote Experience</div>
               <div class="text-sm font-semibold text-slate-200">Temenos Transact, TAFJ, Enterprise App Servers, Turing, MathMaster</div>
             </div>
-            <div class="transition-transform duration-200 hover:translate-x-1">
+            <div class="transition-transform duration-200 hover:translate-x-1.5 cursor-default">
               <div class="text-xs text-slate-500">Education</div>
               <div id="snapshot-edu" class="text-sm font-semibold text-slate-200">B.Sc. Electrical &amp; Computer Engineering &bull; Addis Ababa University (2024)</div>
             </div>
@@ -368,14 +407,14 @@
   <section id="about" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 print-hide-extra">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
       <div class="md:col-span-1">
-        <h2 class="text-xl font-bold text-white">Multidisciplinary Background</h2>
-        <p class="text-sm text-slate-400 mt-1">Combining enterprise systems architecture, analytical precision, and fine-art realism.</p>
+        <h2 class="hover-heading text-xl font-bold text-white cursor-default">Multidisciplinary Background</h2>
+        <p class="hover-text-block text-sm text-slate-400 mt-1 cursor-default">Combining enterprise systems architecture, analytical precision, and fine-art realism.</p>
       </div>
       <div class="md:col-span-2 space-y-4 text-slate-300 leading-relaxed text-sm sm:text-base">
-        <p id="about-p1">
+        <p id="about-p1" class="hover-text-block cursor-default">
           Trained in <strong class="text-white">Electrical &amp; Computer Engineering at Addis Ababa University (Class of 2024)</strong>, I bridge <strong class="text-white">mission-critical core banking integration</strong> and <strong class="text-white">end-to-end full-stack web development</strong> with global remote engineering experience at <strong class="text-sky-400">Turing</strong> and <strong class="text-sky-400">MathMaster</strong>.
         </p>
-        <p id="about-p2">
+        <p id="about-p2" class="hover-text-block cursor-default">
           On the enterprise backend, I focus on Java runtime modernization, <strong class="text-sky-400">Temenos Transact / TAFJ</strong> integration architectures, API gateway design, and automated static analysis pipelines. Beyond software engineering, I bring disciplined observational detail and tonal precision through my <strong class="text-white">realistic charcoal and graphite pencil sketches</strong>.
         </p>
       </div>
@@ -386,8 +425,8 @@
   <section id="experience" class="bg-obsidian-900/60 border-y border-slate-800/80 py-12 sm:py-16">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-8 sm:mb-10">
-        <h2 class="text-2xl font-bold text-white">Professional Experience</h2>
-        <p class="text-sm text-slate-400 mt-1 no-print">Delivering production systems across enterprise core banking, full-stack development, and remote AI/STEM platforms.</p>
+        <h2 class="hover-heading text-2xl font-bold text-white cursor-default">Professional Experience</h2>
+        <p class="hover-text-block text-sm text-slate-400 mt-1 no-print cursor-default">Delivering production systems across enterprise core banking, full-stack development, and remote AI/STEM platforms.</p>
       </div>
 
       <div class="space-y-5 sm:space-y-6">
@@ -395,18 +434,18 @@
         <div class="hover-card border border-slate-800 rounded-xl p-5 sm:p-8 bg-obsidian-850/90">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
-              <h3 class="text-base sm:text-lg font-bold text-white">Core Banking Integration &amp; Enterprise Java Engineer</h3>
+              <h3 class="hover-heading text-base sm:text-lg font-bold text-white cursor-default">Core Banking Integration &amp; Enterprise Java Engineer</h3>
               <p class="text-xs sm:text-sm font-medium text-sky-400">Enterprise Banking Technology &amp; Integration Team</p>
             </div>
-            <span class="font-mono text-xs px-3 py-1 rounded-md bg-obsidian-950 border border-slate-800 text-sky-400 self-start">
+            <span class="hover-chip font-mono text-xs px-3 py-1 rounded-md bg-obsidian-950 border border-slate-800 text-sky-400 self-start">
               Enterprise Banking
             </span>
           </div>
           <ul class="space-y-2.5 text-sm text-slate-300 list-disc pl-5">
-            <li>Led enterprise Java runtime modernization across core banking integration adapters and custom business routines, upgrading cryptographic security modules and eliminating deprecated runtime dependencies.</li>
-            <li>Architected, configured, and tuned <strong class="text-white">Temenos Application Framework Java (TAFJ)</strong> environments across enterprise Java application servers and relational databases using automated deployment scripts.</li>
-            <li class="print-hide-extra">Authored Interface Control Documents (ICDs) and coordinated cross-functional technical alignment across internal engineering teams and external core banking specialists ahead of System Integration Testing (SIT) and Close of Business (COB) validation.</li>
-            <li class="print-hide-extra">Developed automated Python static analysis and AST-assisted refactoring pipelines to enforce security rules, validate classpath compliance, and generate structured migration telemetry.</li>
+            <li class="hover-bullet">Led enterprise Java runtime modernization across core banking integration adapters and custom business routines, upgrading cryptographic security modules and eliminating deprecated runtime dependencies.</li>
+            <li class="hover-bullet">Architected, configured, and tuned <strong class="text-white">Temenos Application Framework Java (TAFJ)</strong> environments across enterprise Java application servers and relational databases using automated deployment scripts.</li>
+            <li class="hover-bullet print-hide-extra">Authored Interface Control Documents (ICDs) and coordinated cross-functional technical alignment across internal engineering teams and external core banking specialists ahead of System Integration Testing (SIT) and Close of Business (COB) validation.</li>
+            <li class="hover-bullet print-hide-extra">Developed automated Python static analysis and AST-assisted refactoring pipelines to enforce security rules, validate classpath compliance, and generate structured migration telemetry.</li>
           </ul>
         </div>
 
@@ -414,17 +453,17 @@
         <div class="hover-card border border-slate-800 rounded-xl p-5 sm:p-8 bg-obsidian-850/90">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
-              <h3 class="text-base sm:text-lg font-bold text-white">Full-Stack Software Developer</h3>
+              <h3 class="hover-heading text-base sm:text-lg font-bold text-white cursor-default">Full-Stack Software Developer</h3>
               <p class="text-xs sm:text-sm font-medium text-sky-400">Web Applications, APIs &amp; Database Systems</p>
             </div>
-            <span class="font-mono text-xs px-3 py-1 rounded-md bg-obsidian-950 border border-slate-800 text-emerald-400 self-start">
+            <span class="hover-chip font-mono text-xs px-3 py-1 rounded-md bg-obsidian-950 border border-slate-800 text-emerald-400 self-start">
               Full-Stack Engineering
             </span>
           </div>
           <ul class="space-y-2.5 text-sm text-slate-300 list-disc pl-5">
-            <li>Designed and shipped full-stack web applications combining responsive <strong class="text-white">React / TypeScript / Tailwind CSS</strong> frontends with modular <strong class="text-white">Java Spring Boot, Node.js, and Python</strong> RESTful backends.</li>
-            <li>Architected relational database schemas, stored procedures, and optimized queries across <strong class="text-white">PostgreSQL</strong> and <strong class="text-white">MS SQL Server</strong>, ensuring transactional integrity under concurrent workloads.</li>
-            <li class="print-hide-extra">Implemented end-to-end authentication, role-based access control (RBAC), OpenAPI/Swagger service contracts, and automated CI/CD deployment workflows on cloud platforms including Render and Docker.</li>
+            <li class="hover-bullet">Designed and shipped full-stack web applications combining responsive <strong class="text-white">React / TypeScript / Tailwind CSS</strong> frontends with modular <strong class="text-white">Java Spring Boot, Node.js, and Python</strong> RESTful backends.</li>
+            <li class="hover-bullet">Architected relational database schemas, stored procedures, and optimized queries across <strong class="text-white">PostgreSQL</strong> and <strong class="text-white">MS SQL Server</strong>, ensuring transactional integrity under concurrent workloads.</li>
+            <li class="hover-bullet print-hide-extra">Implemented end-to-end authentication, role-based access control (RBAC), OpenAPI/Swagger service contracts, and automated CI/CD deployment workflows on cloud platforms including Render and Docker.</li>
           </ul>
         </div>
 
@@ -432,17 +471,17 @@
         <div class="hover-card border border-slate-800 rounded-xl p-5 sm:p-8 bg-obsidian-850/90">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
-              <h3 class="text-base sm:text-lg font-bold text-white">Remote AI &amp; Technical Evaluation Engineer</h3>
+              <h3 class="hover-heading text-base sm:text-lg font-bold text-white cursor-default">Remote AI &amp; Technical Evaluation Engineer</h3>
               <p class="text-xs sm:text-sm font-medium text-sky-400">Turing &bull; Remote</p>
             </div>
-            <span class="font-mono text-xs px-3 py-1 rounded-md bg-obsidian-950 border border-slate-800 text-purple-400 self-start">
+            <span class="hover-chip font-mono text-xs px-3 py-1 rounded-md bg-obsidian-950 border border-slate-800 text-purple-400 self-start">
               Remote &bull; AI &amp; STEM Benchmarks
             </span>
           </div>
           <ul class="space-y-2.5 text-sm text-slate-300 list-disc pl-5">
-            <li>Authored and validated complex, multi-step technical and scientific evaluation benchmarks spanning software engineering, quantitative modeling, genomics, metabolic engineering, and clinical translation.</li>
-            <li class="print-hide-extra">Designed atomic grading rubrics, programmatic verification scripts, and LaTeX-formatted technical specifications to meet strict automated quality-review and reproducibility thresholds.</li>
-            <li class="print-hide-extra">Audited and refined large language model (LLM) reasoning outputs for factual precision, edge-case handling, and code execution integrity.</li>
+            <li class="hover-bullet">Authored and validated complex, multi-step technical and scientific evaluation benchmarks spanning software engineering, quantitative modeling, genomics, metabolic engineering, and clinical translation.</li>
+            <li class="hover-bullet print-hide-extra">Designed atomic grading rubrics, programmatic verification scripts, and LaTeX-formatted technical specifications to meet strict automated quality-review and reproducibility thresholds.</li>
+            <li class="hover-bullet print-hide-extra">Audited and refined large language model (LLM) reasoning outputs for factual precision, edge-case handling, and code execution integrity.</li>
           </ul>
         </div>
 
@@ -450,16 +489,16 @@
         <div class="hover-card border border-slate-800 rounded-xl p-5 sm:p-8 bg-obsidian-850/90">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
             <div>
-              <h3 class="text-base sm:text-lg font-bold text-white">Math Expert (Top Performer)</h3>
+              <h3 class="hover-heading text-base sm:text-lg font-bold text-white cursor-default">Math Expert (Top Performer)</h3>
               <p class="text-xs sm:text-sm font-medium text-sky-400">MathMaster &bull; Remote (Jul 2023 – Jun 2026)</p>
             </div>
-            <span class="font-mono text-xs px-3 py-1 rounded-md bg-obsidian-950 border border-slate-800 text-amber-400 self-start">
+            <span class="hover-chip font-mono text-xs px-3 py-1 rounded-md bg-obsidian-950 border border-slate-800 text-amber-400 self-start">
               Remote &bull; Top Performer
             </span>
           </div>
           <ul class="space-y-2.5 text-sm text-slate-300 list-disc pl-5">
-            <li>Recognized multiple times as a <strong class="text-white">Top Performer</strong> over a three-year tenure delivering rigorous, step-by-step mathematical solutions and formal proofs across calculus, linear algebra, differential equations, discrete mathematics, and probability theory.</li>
-            <li class="print-hide-extra">Translated complex quantitative problems into structured, accessible analytical walkthroughs maintaining high accuracy and rapid turnaround times for students worldwide.</li>
+            <li class="hover-bullet">Recognized multiple times as a <strong class="text-white">Top Performer</strong> over a three-year tenure delivering rigorous, step-by-step mathematical solutions and formal proofs across calculus, linear algebra, differential equations, discrete mathematics, and probability theory.</li>
+            <li class="hover-bullet print-hide-extra">Translated complex quantitative problems into structured, accessible analytical walkthroughs maintaining high accuracy and rapid turnaround times for students worldwide.</li>
           </ul>
         </div>
       </div>
@@ -470,8 +509,8 @@
   <section id="projects" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 print-hide-extra">
     <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4">
       <div>
-        <h2 class="text-2xl font-bold text-white">Selected Systems &amp; Case Studies</h2>
-        <p class="text-sm text-slate-400 mt-1">Production architectures spanning core banking modernization, full-stack platforms, and AI evaluation.</p>
+        <h2 class="hover-heading text-2xl font-bold text-white cursor-default">Selected Systems &amp; Case Studies</h2>
+        <p class="hover-text-block text-sm text-slate-400 mt-1 cursor-default">Production architectures spanning core banking modernization, full-stack platforms, and AI evaluation.</p>
       </div>
       <div class="flex flex-wrap gap-2 no-print">
         <button onclick="filterProjects('all')" class="hover-btn proj-filter active px-3.5 py-2 text-xs font-semibold rounded-md bg-sky-500 text-slate-950" data-filter="all">All</button>
@@ -489,8 +528,8 @@
             <span class="text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400">Enterprise Java / Core Banking</span>
             <span class="text-xs font-mono text-slate-500">Code Modernization</span>
           </div>
-          <h3 class="text-base sm:text-lg font-bold text-white mb-2">Automated Enterprise Java Modernization Pipeline</h3>
-          <p class="text-sm text-slate-400 leading-relaxed mb-4">
+          <h3 class="hover-heading text-base sm:text-lg font-bold text-white mb-2 cursor-default">Automated Enterprise Java Modernization Pipeline</h3>
+          <p class="hover-text-block text-sm text-slate-400 leading-relaxed mb-4 cursor-default">
             Engineered Python static defect scanners and automated AST refactoring scripts to modernize legacy core banking integration modules, upgrade cryptographic security standards, and validate compilation compliance.
           </p>
         </div>
@@ -509,8 +548,8 @@
             <span class="text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-sky-500/10 border border-sky-500/20 text-sky-400">Middleware &amp; Infrastructure</span>
             <span class="text-xs font-mono text-slate-500">Temenos Transact</span>
           </div>
-          <h3 class="text-base sm:text-lg font-bold text-white mb-2">Temenos TAFJ &amp; Enterprise Middleware Architecture</h3>
-          <p class="text-sm text-slate-400 leading-relaxed mb-4">
+          <h3 class="hover-heading text-base sm:text-lg font-bold text-white mb-2 cursor-default">Temenos TAFJ &amp; Enterprise Middleware Architecture</h3>
+          <p class="hover-text-block text-sm text-slate-400 leading-relaxed mb-4 cursor-default">
             Architected and automated Temenos TAFJ runtime provisioning across enterprise Java application servers and SQL databases, configuring REST/OFS integration endpoints, structured logging, and multi-threaded batch processing.
           </p>
         </div>
@@ -529,8 +568,8 @@
             <span class="text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">Full-Stack Web Platform</span>
             <span class="text-xs font-mono text-slate-500">Spring Boot + React</span>
           </div>
-          <h3 class="text-base sm:text-lg font-bold text-white mb-2">Financial Operations Portal &amp; API Gateway</h3>
-          <p class="text-sm text-slate-400 leading-relaxed mb-4">
+          <h3 class="hover-heading text-base sm:text-lg font-bold text-white mb-2 cursor-default">Financial Operations Portal &amp; API Gateway</h3>
+          <p class="hover-text-block text-sm text-slate-400 leading-relaxed mb-4 cursor-default">
             Built a full-stack financial operations dashboard with a React + TypeScript frontend and a Spring Boot REST API backend, featuring JWT authentication, real-time transaction audit logs, and PostgreSQL persistence.
           </p>
         </div>
@@ -549,8 +588,8 @@
             <span class="text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-purple-500/10 border border-purple-500/20 text-purple-400">AI &amp; STEM Evaluation</span>
             <span class="text-xs font-mono text-slate-500">Turing &bull; Benchmarks</span>
           </div>
-          <h3 class="text-base sm:text-lg font-bold text-white mb-2">Scientific &amp; Quantitative LLM Evaluation Suite</h3>
-          <p class="text-sm text-slate-400 leading-relaxed mb-4">
+          <h3 class="hover-heading text-base sm:text-lg font-bold text-white mb-2 cursor-default">Scientific &amp; Quantitative LLM Evaluation Suite</h3>
+          <p class="hover-text-block text-sm text-slate-400 leading-relaxed mb-4 cursor-default">
             Engineered high-rigor evaluation tasks and atomic grading rubrics across computational biology, genomics, and formal mathematics, achieving top-tier quality review scores through automated verification scripts.
           </p>
         </div>
@@ -570,8 +609,8 @@
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4">
         <div>
           <div class="text-xs font-mono uppercase tracking-wider text-sky-400 mb-1">Beyond Engineering</div>
-          <h2 class="text-2xl font-bold text-white">Realistic Charcoal &amp; Pencil Sketches</h2>
-          <p class="text-sm text-slate-400 mt-1">Hand-drawn hyperrealistic graphite and charcoal portraits and tonal studies on paper. Tap any sketch to inspect in full resolution.</p>
+          <h2 class="hover-heading text-2xl font-bold text-white cursor-default">Realistic Charcoal &amp; Pencil Sketches</h2>
+          <p class="hover-text-block text-sm text-slate-400 mt-1 cursor-default">Hand-drawn hyperrealistic graphite and charcoal portraits and tonal studies on paper. Tap any sketch to inspect in full resolution.</p>
         </div>
         <a href="https://t.me/sabonart" target="_blank" rel="noopener noreferrer" class="hover-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-700 bg-obsidian-850 text-xs font-medium text-slate-200 hover:border-sky-500/50 hover:text-sky-400 self-start">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -593,7 +632,7 @@
           </div>
           <div class="p-4 flex items-center justify-between">
             <div>
-              <h3 class="text-sm font-bold text-white">Realistic Portrait Study I</h3>
+              <h3 class="text-sm font-bold text-white transition-colors group-hover:text-sky-400">Realistic Portrait Study I</h3>
               <p class="text-xs text-slate-400 mt-0.5">Charcoal &amp; Graphite Pencil on Paper</p>
             </div>
             <span class="text-xs font-mono text-sky-400 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">View &rarr;</span>
@@ -611,7 +650,7 @@
           </div>
           <div class="p-4 flex items-center justify-between">
             <div>
-              <h3 class="text-sm font-bold text-white">Realistic Tonal &amp; Light Study II</h3>
+              <h3 class="text-sm font-bold text-white transition-colors group-hover:text-sky-400">Realistic Tonal &amp; Light Study II</h3>
               <p class="text-xs text-slate-400 mt-0.5">Fine Graphite &amp; Charcoal Pencil Sketch</p>
             </div>
             <span class="text-xs font-mono text-sky-400 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">View &rarr;</span>
@@ -629,7 +668,7 @@
           </div>
           <div class="p-4 flex items-center justify-between">
             <div>
-              <h3 class="text-sm font-bold text-white">Realistic Expression &amp; Texture Study III</h3>
+              <h3 class="text-sm font-bold text-white transition-colors group-hover:text-sky-400">Realistic Expression &amp; Texture Study III</h3>
               <p class="text-xs text-slate-400 mt-0.5">Charcoal &amp; Pencil Shading on Paper</p>
             </div>
             <span class="text-xs font-mono text-sky-400 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">View &rarr;</span>
@@ -643,25 +682,25 @@
   <section id="education" class="bg-obsidian-900/60 border-y border-slate-800/80 py-12 sm:py-16">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-8 sm:mb-10">
-        <h2 class="text-2xl font-bold text-white">Education, Certifications &amp; Training</h2>
-        <p class="text-sm text-slate-400 mt-1 no-print">Academic foundation in engineering, verified developer credentials, and core banking architecture.</p>
+        <h2 class="hover-heading text-2xl font-bold text-white cursor-default">Education, Certifications &amp; Training</h2>
+        <p class="hover-text-block text-sm text-slate-400 mt-1 no-print cursor-default">Academic foundation in engineering, verified developer credentials, and core banking architecture.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="hover-card border border-slate-800 rounded-xl p-5 sm:p-6 bg-obsidian-850/90">
           <div class="text-xs font-mono text-sky-400 mb-1">Academic Degree</div>
-          <h3 id="edu-degree" class="text-base sm:text-lg font-bold text-white">B.Sc. in Electrical &amp; Computer Engineering</h3>
+          <h3 id="edu-degree" class="hover-heading text-base sm:text-lg font-bold text-white cursor-default">B.Sc. in Electrical &amp; Computer Engineering</h3>
           <p id="edu-university" class="text-sm font-medium text-slate-300 mt-1">Addis Ababa University &bull; Class of 2024</p>
-          <p id="edu-details" class="text-sm text-slate-400 mt-3 leading-relaxed print-hide-extra">
+          <p id="edu-details" class="hover-text-block text-sm text-slate-400 mt-3 leading-relaxed print-hide-extra cursor-default">
             Comprehensive engineering curriculum covering Computer Architecture, Data Structures &amp; Algorithms, Object-Oriented Software Engineering, Database Management Systems, Computer Networks, and Embedded/Distributed Systems.
           </p>
         </div>
 
         <div class="hover-card border border-slate-800 rounded-xl p-5 sm:p-6 bg-obsidian-850/90">
           <div class="text-xs font-mono text-sky-400 mb-1">Enterprise Specialization</div>
-          <h3 class="text-base sm:text-lg font-bold text-white">Temenos Transact &amp; Core Banking Technical Architecture</h3>
+          <h3 class="hover-heading text-base sm:text-lg font-bold text-white cursor-default">Temenos Transact &amp; Core Banking Technical Architecture</h3>
           <p class="text-sm font-medium text-slate-300 mt-1">Core Banking Technical Enablement</p>
-          <p class="text-sm text-slate-400 mt-3 leading-relaxed print-hide-extra">
+          <p class="hover-text-block text-sm text-slate-400 mt-3 leading-relaxed print-hide-extra cursor-default">
             Specialized training covering TAFJ runtime architecture, Java extensibility hooks, Close of Business (COB) batch processing, Temenos Web Services (TWS), and IRIS RESTful APIs.
           </p>
         </div>
@@ -669,14 +708,14 @@
 
       <!-- Verified Technical Certifications -->
       <div class="mt-8 pt-8 border-t border-slate-800/80">
-        <h3 class="text-xs font-mono uppercase tracking-wider text-sky-400 mb-4 no-print">Verified Technical Certifications</h3>
+        <h3 class="hover-heading text-xs font-mono uppercase tracking-wider text-sky-400 mb-4 no-print cursor-default">Verified Technical Certifications</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- freeCodeCamp -->
           <div class="hover-card border border-slate-800 rounded-xl p-5 bg-obsidian-850/90 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div class="text-xs font-mono text-slate-400 mb-1">freeCodeCamp &bull; Issued March 4, 2023</div>
-              <h4 class="text-sm font-bold text-white">Responsive Web Design Developer Certification</h4>
-              <p class="text-xs text-slate-400 mt-1 print-hide-extra">300 hours of coursework in semantic HTML5, modern CSS, Flexbox/Grid, and responsive UI architecture.</p>
+              <h4 class="hover-heading text-sm font-bold text-white cursor-default">Responsive Web Design Developer Certification</h4>
+              <p class="hover-text-block text-xs text-slate-400 mt-1 print-hide-extra cursor-default">300 hours of coursework in semantic HTML5, modern CSS, Flexbox/Grid, and responsive UI architecture.</p>
             </div>
             <a href="https://freecodecamp.org/certification/SabonaTolasa/responsive-web-design" target="_blank" rel="noopener noreferrer" aria-label="Verify freeCodeCamp Certification" title="Verify Credential" class="hover-btn self-start sm:self-center shrink-0 px-3.5 py-2 rounded-lg border border-slate-700 bg-obsidian-950 text-xs font-mono text-sky-400 hover:border-sky-500/50 no-print">
               Verify &rarr;
@@ -687,10 +726,10 @@
           <div class="hover-card border border-slate-800 rounded-xl p-5 bg-obsidian-850/90 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div class="text-xs font-mono text-slate-400 mb-1">Cisco Networking Academy &amp; OpenEDG Python Institute &bull; Issued March 7, 2023</div>
-              <h4 class="text-sm font-bold text-white">Python Essentials 1</h4>
-              <p class="text-xs text-slate-400 mt-1 print-hide-extra">Python 3 programming, algorithmic thinking, Python Standard Library scripting, and debugging.</p>
+              <h4 class="hover-heading text-sm font-bold text-white cursor-default">Python Essentials 1</h4>
+              <p class="hover-text-block text-xs text-slate-400 mt-1 print-hide-extra cursor-default">Python 3 programming, algorithmic thinking, Python Standard Library scripting, and debugging.</p>
             </div>
-            <span class="self-start sm:self-center shrink-0 px-3.5 py-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-xs font-mono text-emerald-400 no-print">
+            <span class="hover-chip self-start sm:self-center shrink-0 px-3.5 py-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 text-xs font-mono text-emerald-400 no-print cursor-default">
               Verified
             </span>
           </div>
@@ -702,52 +741,52 @@
   <!-- Technical Stack Matrix -->
   <section id="skills" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
     <div class="mb-8 sm:mb-10">
-      <h2 class="text-2xl font-bold text-white">Technical Stack</h2>
-      <p class="text-sm text-slate-400 mt-1 no-print">Production languages, frameworks, databases, and enterprise middleware.</p>
+      <h2 class="hover-heading text-2xl font-bold text-white cursor-default">Technical Stack</h2>
+      <p class="hover-text-block text-sm text-slate-400 mt-1 no-print cursor-default">Production languages, frameworks, databases, and enterprise middleware.</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
       <div class="hover-card bg-obsidian-850 border border-slate-800 rounded-xl p-5">
-        <h3 class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3">Backend &amp; Enterprise</h3>
+        <h3 class="hover-heading text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3 cursor-default">Backend &amp; Enterprise</h3>
         <ul class="space-y-2 text-sm text-slate-300">
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Enterprise Java &amp; OOP</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Spring Boot &amp; Spring Security</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Python (Automation &amp; FastAPI)</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Node.js &amp; Express</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">RESTful APIs, SOAP &amp; OFS</li>
+          <li class="hover-bullet cursor-default">Enterprise Java &amp; OOP</li>
+          <li class="hover-bullet cursor-default">Spring Boot &amp; Spring Security</li>
+          <li class="hover-bullet cursor-default">Python (Automation &amp; FastAPI)</li>
+          <li class="hover-bullet cursor-default">Node.js &amp; Express</li>
+          <li class="hover-bullet cursor-default">RESTful APIs, SOAP &amp; OFS</li>
         </ul>
       </div>
 
       <div class="hover-card bg-obsidian-850 border border-slate-800 rounded-xl p-5">
-        <h3 class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3">Frontend &amp; Fine Art</h3>
+        <h3 class="hover-heading text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3 cursor-default">Frontend &amp; Fine Art</h3>
         <ul class="space-y-2 text-sm text-slate-300">
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">TypeScript &amp; Modern JavaScript</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">React &amp; Next.js</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">HTML5 &amp; Tailwind CSS</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Realistic Charcoal &amp; Pencil Sketching</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">LaTeX &amp; Technical Authoring</li>
+          <li class="hover-bullet cursor-default">TypeScript &amp; Modern JavaScript</li>
+          <li class="hover-bullet cursor-default">React &amp; Next.js</li>
+          <li class="hover-bullet cursor-default">HTML5 &amp; Tailwind CSS</li>
+          <li class="hover-bullet cursor-default">Realistic Charcoal &amp; Pencil Sketching</li>
+          <li class="hover-bullet cursor-default">LaTeX &amp; Technical Authoring</li>
         </ul>
       </div>
 
       <div class="hover-card bg-obsidian-850 border border-slate-800 rounded-xl p-5">
-        <h3 class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3">Core Banking &amp; Middleware</h3>
+        <h3 class="hover-heading text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3 cursor-default">Core Banking &amp; Middleware</h3>
         <ul class="space-y-2 text-sm text-slate-300">
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Temenos Transact</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Temenos TAFJ &amp; Java Extensibility</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Enterprise Java App Servers</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Temenos IRIS &amp; TWS</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Batch Processing &amp; High Availability</li>
+          <li class="hover-bullet cursor-default">Temenos Transact</li>
+          <li class="hover-bullet cursor-default">Temenos TAFJ &amp; Java Extensibility</li>
+          <li class="hover-bullet cursor-default">Enterprise Java App Servers</li>
+          <li class="hover-bullet cursor-default">Temenos IRIS &amp; TWS</li>
+          <li class="hover-bullet cursor-default">Batch Processing &amp; High Availability</li>
         </ul>
       </div>
 
       <div class="hover-card bg-obsidian-850 border border-slate-800 rounded-xl p-5">
-        <h3 class="text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3">Data, Math &amp; DevOps</h3>
+        <h3 class="hover-heading text-xs font-mono font-bold text-sky-400 uppercase tracking-wider mb-3 cursor-default">Data, Math &amp; DevOps</h3>
         <ul class="space-y-2 text-sm text-slate-300">
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Microsoft SQL Server</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">PostgreSQL &amp; MySQL</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Quantitative &amp; Mathematical Modeling</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Scripting, Git &amp; Docker</li>
-          <li class="transition-transform duration-150 hover:translate-x-1 hover:text-white">Cloud Deployment &amp; CI/CD</li>
+          <li class="hover-bullet cursor-default">Microsoft SQL Server</li>
+          <li class="hover-bullet cursor-default">PostgreSQL &amp; MySQL</li>
+          <li class="hover-bullet cursor-default">Quantitative &amp; Mathematical Modeling</li>
+          <li class="hover-bullet cursor-default">Scripting, Git &amp; Docker</li>
+          <li class="hover-bullet cursor-default">Cloud Deployment &amp; CI/CD</li>
         </ul>
       </div>
     </div>
@@ -757,8 +796,8 @@
   <section id="contact" class="bg-obsidian-900 border-t border-slate-800 py-12 sm:py-16 no-print">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-8">
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-3">Connect with Sabona Tolasa</h2>
-        <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+        <h2 class="hover-heading text-2xl sm:text-3xl font-bold tracking-tight text-white mb-3 inline-block cursor-default">Connect with Sabona Tolasa</h2>
+        <p class="hover-text-block text-slate-400 text-sm sm:text-base leading-relaxed cursor-default">
           Available for full-stack software engineering roles, core banking integration consulting, remote AI/STEM engineering, and realistic charcoal or pencil portrait commissions.
         </p>
       </div>
@@ -791,7 +830,7 @@
   <!-- Footer with Icon-Only Social Links -->
   <footer class="bg-obsidian-950 text-slate-500 py-8 text-xs border-t border-slate-800/80 no-print">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-      <div id="footer-copy">&copy; 2026 Sabona Tolasa. Core Banking Integration, Full-Stack &amp; AI Systems Engineer.</div>
+      <div id="footer-copy" class="hover-text-block cursor-default">&copy; 2026 Sabona Tolasa. Core Banking Integration, Full-Stack &amp; AI Systems Engineer.</div>
 
       <div class="flex items-center gap-4">
         <!-- LinkedIn Icon -->
