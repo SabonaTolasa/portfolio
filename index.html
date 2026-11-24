@@ -188,29 +188,39 @@
       }
     }
 
+    /* Strict Single-Page A4 CV Print Engine */
     @page {
       size: A4 portrait;
-      margin: 10mm 12mm;
+      margin: 7mm 9mm;
     }
     @media print {
-      .no-print, #artwork, #contact, header, footer, #art-lightbox, #mobile-menu {
+      .no-print, .print-hide-extra, #artwork, #contact, header, footer, #art-lightbox, #mobile-menu,
+      #top .lg\:col-span-4 {
         display: none !important;
       }
       html, body {
+        width: 100% !important;
+        height: auto !important;
         background: #ffffff !important;
         color: #0f172a !important;
-        font-size: 9.5pt !important;
-        line-height: 1.35 !important;
+        font-size: 8.5pt !important;
+        line-height: 1.28 !important;
+        margin: 0 !important;
+        padding: 0 !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
       section {
         background: #ffffff !important;
         border: none !important;
-        padding-top: 6px !important;
-        padding-bottom: 6px !important;
+        padding: 3px 0 !important;
         margin: 0 !important;
         break-inside: avoid;
+      }
+      #top > div {
+        padding-top: 0 !important;
+        padding-bottom: 4px !important;
+        border-bottom: 1.5px solid #0284c7 !important;
       }
       .max-w-6xl {
         max-width: 100% !important;
@@ -218,59 +228,95 @@
         padding-right: 0 !important;
       }
       h1 {
-        font-size: 18pt !important;
+        font-size: 16pt !important;
+        line-height: 1.15 !important;
         color: #0f172a !important;
-        margin-bottom: 2px !important;
+        margin-bottom: 1px !important;
+      }
+      #hero-subtitle {
+        font-size: 9.5pt !important;
+        margin-bottom: 3px !important;
+      }
+      #hero-summary {
+        font-size: 8.3pt !important;
+        line-height: 1.28 !important;
+        margin-bottom: 0 !important;
+        max-width: 100% !important;
       }
       h2 {
-        font-size: 11pt !important;
+        font-size: 9.5pt !important;
         color: #0284c7 !important;
         border-bottom: 1px solid #cbd5e1 !important;
-        padding-bottom: 2px !important;
-        margin-bottom: 6px !important;
+        padding-bottom: 1px !important;
+        margin-bottom: 4px !important;
         text-transform: uppercase;
         letter-spacing: 0.04em;
       }
       h3, h4 {
-        font-size: 9.5pt !important;
+        font-size: 8.6pt !important;
+        line-height: 1.2 !important;
         color: #0f172a !important;
       }
       p, li, span, div, strong, code {
         color: #1e293b !important;
         background: transparent !important;
+        transform: none !important;
+        text-shadow: none !important;
       }
       .text-sky-400, .text-emerald-400, .text-purple-400, .text-amber-400 {
         color: #0369a1 !important;
       }
       .bg-obsidian-850, .bg-obsidian-850\/90, .bg-obsidian-900\/60, .bg-obsidian-950 {
         background: #f8fafc !important;
-        border-color: #cbd5e1 !important;
+        border: 1px solid #e2e8f0 !important;
         box-shadow: none !important;
       }
       .rounded-xl {
-        padding: 8px 10px !important;
-        border-radius: 6px !important;
+        padding: 5px 8px !important;
+        border-radius: 4px !important;
+      }
+      ul.list-disc {
+        padding-left: 14px !important;
+        margin-top: 2px !important;
+      }
+      li {
+        font-size: 8.1pt !important;
+        line-height: 1.25 !important;
+      }
+      #education .grid,
+      #education .mt-8 .grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+      }
+      #skills .grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+      }
+      #skills ul li {
+        font-size: 7.7pt !important;
+        line-height: 1.2 !important;
       }
       .space-y-6 > :not([hidden]) ~ :not([hidden]),
+      .space-y-5 > :not([hidden]) ~ :not([hidden]),
       .space-y-4 > :not([hidden]) ~ :not([hidden]) {
-        margin-top: 6px !important;
+        margin-top: 4px !important;
       }
       .space-y-2\.5 > :not([hidden]) ~ :not([hidden]),
       .space-y-2 > :not([hidden]) ~ :not([hidden]) {
-        margin-top: 2px !important;
+        margin-top: 1.5px !important;
       }
       .gap-6, .gap-8, .gap-12 {
         gap: 8px !important;
       }
-      .mb-10, .mb-8, .mb-6, .mb-5, .mb-4 {
-        margin-bottom: 4px !important;
+      .mb-10, .mb-8, .mb-6, .mb-5, .mb-4, .mb-3 {
+        margin-bottom: 2px !important;
       }
       .mt-8, .pt-8 {
-        margin-top: 6px !important;
-        padding-top: 6px !important;
-      }
-      .print-hide-extra {
-        display: none !important;
+        margin-top: 4px !important;
+        padding-top: 4px !important;
+        border-top: none !important;
       }
     }
   </style>
